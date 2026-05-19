@@ -1,0 +1,28 @@
+﻿{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Dash (python)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/python/dash_app/app.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Streamlit",
+      "type": "python",
+      "request": "launch",
+      "module": "streamlit",
+      "args": ["run", "${workspaceFolder}/python/streamlit_app/app.py"],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Shiny (python)",
+      "type": "python",
+      "request": "launch",
+      "module": "shiny",
+      "args": ["run", "--reload", "${workspaceFolder}/python/shiny_app/app.py"],
+      "console": "integratedTerminal"
+    }
+  ]
+}

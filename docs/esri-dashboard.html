@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ArcGIS Dashboard - Dansk Esri Konference 2026</title>
+  <link rel="stylesheet" href="assets/css/ssi-theme.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <p>
+        <a href="index.html" style="color: rgba(255, 255, 255, 0.8)">&larr; Tilbage til forsiden</a>
+      </p>
+      <h1>ArcGIS Dashboard</h1>
+      <p>
+        Dashboard-overblikket bygges som et ArcGIS Dashboards workflow, hvor
+        webkort og dashboard-item oprettes via ArcGIS API for Python.
+      </p>
+    </div>
+  </header>
+  <main class="content">
+    <section class="card-grid single-column">
+      <article class="card">
+        <h2>Workflow</h2>
+        <p>
+          Kør først 3D-scenen, så det hostede feature layer findes i ArcGIS
+          Online. Kør derefter dashboard-scriptet, som finder laget, opretter et
+          webkort og opretter eller opdaterer et ArcGIS Dashboard.
+        </p>
+        <pre><code>python arcgis/dashboards/create_nordic_covid_scene.py
+python arcgis/dashboards/create_nordic_covid_dashboard.py</code></pre>
+      </article>
+      <article class="card">
+        <h2>Output</h2>
+        <p>
+          Scriptet placerer dashboard, webkort, webscene og hosted layer i
+          ArcGIS Online-mappen <code>dek_2026</code>. Åbn dashboardet i ArcGIS
+          Online for sidste layouttilpasning og deling til konferencen.
+        </p>
+      </article>
+    </section>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,433 @@
+﻿# Ændringslog (Changelog)
+
+**English version below the Danish version**
+
+Alle betydelige ændringer, der har betydning for covid-19 tallene i det kommunale smittetryksdashboard bliver dokumenteret i denne fil.
+
+Formatet er baseret på [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+og versionsnummeringen er baseret på [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [8.0.0] - 2025-05-13T14:00:00
+### Ændret
+- Fra den 13. maj vil alle filer, der indeholder et tidsstempel, kun vise dette i headeren, og rækkerne i den kolonne vil være tomme.
+
+## [7.0.0] - 2025-03-19T14:00:00
+### Fjernet
+- Kortene med "Positiv procent de seneste 7 dage" og "PCR-testede de seneste 7 dage" er blevet udfaset.
+- graferne med "Testede pr. 100.000 borgere fordelt på køn", "Bekræftede tilfælde pr. 100.000 borgere pr. Køn" and "Nye indlæggelser pr. 100.000 fordelt på køn" er blevet udfaset.
+- tallene for de udfasede visninger findes stadig i zip-filen til download.
+
+## [6.1.0] - 2025-02-18T14:00:00
+### Ændret
+- Fejlrettelse: Hvis data køres på en mandag kommer antallet af positive og positivprocenten nu korrekt med fra ugen før.
+
+## [6.0.1] - 2025-01-28T14:00:00
+### Ændret
+-  Vi har justeret alle figurer, så de enkelte linjer kan ses bedre. Skyggen under stregerne er fjernet
+
+## [6.0.0] - 2024-08-28T14:00:00
+### Fjernet
+- Fra og med den 28. august 2024 udgår variantdata [29_variant_tabel.xlsx] fra zip-filen. 
+
+## [5.1.0] - 2024-04-24T14:00:00
+### Tilføjet
+- Fra og med den 24. april inkluderer dette dashboard tallene fra Virusmåling i Danmark. Det betyder, at antallet af både tests og infektioner er steget, også bagud i tid.
+
+## [5.0.2] - 2023-11-15T14:00:00
+### Tilføjet
+- nyt link til desktopversion fra mobilversion under "mere": "Vis desktopversion"
+
+## [5.0.1] - 2023-11-01T14:00:00
+### Tilføjet
+- Det er nu muligt at hente bagvedliggende data som csv filer direkte fra dashboardet. 
+
+## [5.0.0] - 2023-09-13T14:00:00
+### Fjernet
+Følgende elementer er fjernet fra dashboardet:
+- Fra onsdag d. 13. september 2023 er det ikke længere muligt at følge nøgletallene ’ændringer siden sidste opdatering’. 
+Følgende filer i zip-filen vil udgå:
+- Filen 01_noegle_tal.csv udgives ikke længere
+
+## [3.1.0] - 2023-09-06T14:00:00
+### Ændret
+- Layoutet af det regionale covid-19 dashboards mobiltelefon version er ændret: Der vises færre figurer og er ikke længere interaktive med regionlisten. Nøgletallene vises kun på nationalt niveau.
+
+## [3.0.3] - 2023-07-19T14:00:00
+### Ændret
+- Interne ændringer
+
+## [3.0.2] - 2023-07-12T14:00:00
+### Ændret
+- Datoformatet er nu ensartet i csv filerne: YYYY-MM-DD
+
+## [3.0.1] - 2023-06-28T14:00:00
+### Ændret
+- Terminologien for 'nyindlagte' er ændret til 'nye indlæggelser' i kolonne navne i csv filerne samt i figurnavne på det regionale covid-19 dashboard.
+
+## [3.0.0] - 2023-06-21T14:00:00
+### Ændret
+Fra onsdag d. 21 juni 2023 vil det regionale covid-19-dashboard ikke længere vise data for ”Hospitalsbelægning”. 
+Samtidig vil data for nye covid-19-relaterede indlæggelser udelukkende være baseret på data fra Landspatientregisteret 
+Indtil nu har dette været baseret på en kombination af data fra Landspatientregisteret og snapshot-data. 
+Ændringen gælder også bagudrettet, hvilket betyder en nedjustering i tidsserierne for nye covid-19-relaterede indlæggelser i hele pandemiperioden. 
+Effekterne for det regionale covid-19 dashboard og de tilsvarende zip filer er angivet nedenfor:
+
+Følgende filer i zip-filen vil have færre kolonner eller udgå:
+- Filen 02_hospitalsbelaegning.csv udgives ikke længere
+- Filen 11_noegletal_pr_region_pr_aldersgruppe.csv12_noegletal_pr_region_pr_aldersgruppe_de_seneste_7_dage.csv: kolonne "Indlagte på intensiv afdeling" udgives ikke længere
+- Filen 12_noegletal_pr_region_pr_fnkt_alder.csv: kolonne "Indlagte på intensiv afdeling" udgives ikke længere
+- Filen 15_indlagte_pr_region_pr_dag.csv udgives ikke længere
+- Filen 21_noegletal_pr_region_pr_fnkt_alder.csv: kolonne "Indlagte på intensiv afdeling" udgives ikke længere
+- Filen 22_noegletal_pr_region_pr_fnkt_alder_de_seneste_7_dage.csv: kolonne "Indlagte på intensiv afdeling" udgives ikke længere
+- Filen 25_indl_varighed_dag_region.csv udgives ikke længere
+- Filen 26_indl_varighed_uge_region_alder.csv udgives ikke længere
+
+Følgende figurer er fjernet fra dashboardet:
+- Figuren Nye indlæggelser pr. dag fordelt på korte og lange indlæggelser
+- Figuren Nye indlæggelser fordelt på aldersgrupper (korte indlæggelser, <12 timer)
+- Figuren Nye indlæggelser fordelt på aldersgrupper (korte indlæggelser, >12 timer)
+- Figuren Hospitalsbelægning: Indlæggelser pr. dag 
+
+Følgende kolonner i zip-filerne viser fra nu af kun data fra Landspatientregisteret (og vil derfor ændre sig tilbage i tiden):
+- Filen 03_bekraeftede_tilfaelde_doede_indlagte_pr_dag_pr_koen.csv: kolonne "Indlæggelser" og kolonne "Kummuleret antal indlæggelser"
+- Filen 04_indlagte_pr_alders_grp_pr_region.csv: kolonne "Indlæggelser"
+- Filen 06_nye_indlaeggelser_pr_region_pr_dag.csv: kolonne "Dato"
+- Filen 11_noegletal_pr_region_pr_aldersgruppe.csv: kolonne "Indlagte"
+- Filen 12_noegletal_pr_region_pr_aldersgruppe_de_seneste_7_dage.csv: kolonne "Indlagte" 
+- Filen 17_koen_uge_testede_positive_nyindlagte.csv: kolonne "Nyindlagte pr. 100.000 borgere" og "Uge"
+- Filen 18_fnkt_alder_uge_testede_positive_nyindlagte.csv: kolonne "Nyindlagte pr. 100.000 borgere" og "Uge"
+- Filen 19_indlagte_pr_fnkt_alder_pr_region.csv: kolonne "Indlæggelser"
+- Filen 21_noegletal_pr_region_pr_fnkt_alder.csv: kolonne "Indlagte"
+- Filen 27_indl_kategori_dag_region.csv: kolonne "Dato"
+ 
+Følgende tal på dashboardet vil ændre sig tilbage i tiden, da de bruger variabler, som nu kun indeholder data fra Landspatientregisteret:
+- Figuren Testede pr. 100.000 borgere fordelt på aldersgrupper (nationalt)
+- Figuren Bekræftede tilfælde i alt pr. 100.000 borgere fordelt på aldersgrupper (nationalt)
+- Figuren Positive i procent af antal testede pr. uge fordelt på alder (nationalt)
+- Figuren Testede pr. 100.000 borgere fordelt på køn (nationalt)
+- Figuren Bekræftede tilfælde i alt pr. 100.000 borgere fordelt på køn (nationalt)
+- Figuren Nye indlæggelser pr. dag
+- Figuren Nye indlæggelser med og på grund af covid-19 
+- Figuren Nyindlagte pr. 100.000 borgere fordelt på aldersgrupper (nationalt)
+- Figuren Nyindlagte pr. 100.000 borgere fordelt på køn (nationalt)
+
+## [2.10.2] - 2023-05-03T14:00:00
+### Ændret
+- Figuren ændret: Første infektioner og reinfektioner opgjort på prøvetagningsdato. Figuren hedder nu "Første infektioner og reinfektioner opgjort på prøvetagningsuge". Tidserien viser nu type af tilfælde: positivtestede fordelt på grupperne "første infektioner", "første reinfektioner" og "to eller flere reinfektioner" siden uge 9 i 2020. Opgørelsen er vist pr. uge. 
+- Tabel ændret: Følgende nye kolonner er blevet tilføjet til tabel 23_reinfektioner_uge_region.csv:  "Første reinfektion", "To eller flere reinfektioner"
+- Tabel ændret: Tabel 24_reinfektioner_daglig_region.csv er omdøbt til tabel 24_reinfektioner_ugentlig_region.csv. I stedet for "Prøvedato" vises "Uge" nu. Kolonnen "Infected" er omdøbt til "Antal tilfælde". Kolonnen "Type af tilfælde (reinfektion eller første infektion)" er omdøbt til "Type af tilfælde". 
+
+## [2.10.1] - 2023-04-26T14:00:00
+### Tilføjet 
+- Ny figur tilføjet: Positive i procent af antal testede pr. uge fordelt på alder (nationalt). Tidsserien viser positive procent: positive testede i alt divideret med antal PCR tests fordelt på funktionelle aldersgrupper siden uge 5 i 2020. Opgørelsen er vist pr. uge.
+
+## [2.10.0] - 2023-04-12T14:00:00
+### Tilføjet 
+- Ny fil med variantdata (29_variant_tabel.xlsx) er med i zip-filen. Ingen ændringer i Dashboardet.
+
+## [2.9.0] - 2023-04-05T14:00:00
+### Tilføjet
+- Ny fil med plejehjemdata (plejehjem_ugeoversigt.csv)er med i zip-filen. Ingen ændringer i Dashboardet.
+
+### Ændret
+- kolonnenavne rettet fra 'Bekæftede tilfælde beboere' til 'Bekræftede tilfælde beboere', fra 'Dødsfald blandt bekæftede beboere' til 'Dødsfald blandt bekræftede beboere' og 'Plejehjem med bekæftede tilfælde' til 'Plejehjem med bekræftede tilfælde'
+
+## [2.8.0] - 2023-03-28T14:00:00
+### Ændret
+- SSI nedskalerer opdateringsfrekvensen af det regionale covid-19-dashboard: Fra onsdag uge 13 opdateres det regionale covid-19-dashboard ugentligt hver onsdag.
+
+## [2.7.4] - 2023-03-21T14:00:00
+### Ændret
+- Fra tirsdag d. 21. marts 2023 er de to grupper af figurer på det regionale covid-19-dashboard, der viser testede, indlæggelser og døde kategoriseret om. 
+  Alle figurer der omhandler testaktivitet og bekræftede tilfælde kan nu findes i øverste figurvindue i højre side.  
+  Visninger der drejer sig om indlæggelser og døde kan findes i nederste figurvindue til højre.
+
+## [2.7.3] - 2023-02-22T14:00:00
+### Ændret
+- Teksten på grafer, der er på nationalt niveau (ikke interaktive med regionsfilter), er nu markeret med '(nationalt)' i titlen på grafen. 
+- Fejlrettelse: Interaktive figurer og tal er nu koblet korrekt, så når der vælges en region vises det tilsvarende data.
+- Fejlrettelse: Figuren 'Hospitalsbelægning: Indlæggelser pr. dag' er nu igen interaktiv i desktop versionen af dashboardet
+
+## [2.7.2] - 2023-02-20T14:00:00
+### Ændret
+- Manglende regionskoder er nu tilføjet til filerne 07_antal_doede_pr_dag_pr_region.csv og 25_indl_varighed_dag_region.csv
+
+## [2.7.1] - 2023-02-14T17:00:00
+### Ændret
+- Fejlrettelse: Interaktive figurer og tal er nu koblet korrekt, så når der vælges en region vises det tilsvarende data.
+
+## [2.7.0] - 2023-01-30T14:00:00
+### Tilføjet 
+- CSV-filerne i zip-filen har fået tilføjet regionkoden (tidligere var der kun regionsnavn i data).
+
+## [2.6.2] - 2023-01-10T15:00:00
+### Ændret 
+- Mobilversionen af dashboardet har fået et opdateret design. Nøgletallene er mere læselige på de mest anvendte skærmzoomniveauer.
+
+## [2.6.1] - 2022-12-13T14:00:00
+### Ændret 
+- Dashboardet har fået et opdateret design. Nøgletallene er mere læselige på de mest anvendte skærmzoomniveauer. 
+
+## [2.6.0] - 2022-11-22T14:00:00
+### Fjernet 
+- Nøgletalstotalerne, samt figurer der viser totale tal, der dækkede hele covid-19 pandemien, er fjernet fra dashboardet.
+
+## [2.5.1] - 2022-10-13T15:25:00
+### Ændret
+- Metoden til beregning af befolkningstallet er blevet rettet. Se operationstatuslog_regionalt_db.txt filen for yderligere oplysninger.
+
+## [2.5.0] - 2022-10-13T14:00:00
+### Tilføjet
+- Figuren 'Indlæggelser med og på grund af covid-19' og den tilhørende csv-fil 27_indl_kategori_dag_region.csv er tilføjet.
+
+## [2.4.0] - 2022-09-01T14:00:00
+### Fjernet
+- Figuren med 'Mistænkte tilfælde pr. dag' udgår, da antigen-tests ikke længere er en del af teststrategien. Det bagvedliggende data opdateres stadig og er tilgængeligt i zip-filen. 
+
+## [2.3.0] - 2022-06-03T14:00:00
+### Ændret
+- Tallene offentliggøres nu kun på hverdage. 
+
+## [2.2.0] - 2022-06-01T14:00:00
+### Ændret
+- Fejlrettelse: ændringer i indlæggelser siden sidst bliver nu korrekt, selv hvis indlæggelsestallene ikke bliver opdateret en hver dag.
+
+## [2.1.0] - 2022-05-25T14:00:00
+### Tilføjet 
+- Tilføjede kolonnen "Sidste opdatering" i filen 00_Noegletal.
+
+## [2.0.0] - 2022-05-18T14:00:00
+### Tilføjet 
+- Der er nu tilføjet en changelog.md fil, der indeholder beskrivelser om ændringer i opgørelsesmetoder.
+
+## [1.3.0] - 2021-12-15T14:00:00
+### Tilføjet
+- Covid-19-reinfektion er inkluderet i vores eksisterende overvågningstal fra den 13. december 2021. Dvs. der kan i visse visninger ses et mindre datahop den 13. december 2021. 
+
+## [1.2.0] - 2021-03-23T14:00:00
+### Tilføjet
+- Antigentest fjernes fra positive og totalt antal test. På grund af forsinkelse i tallene er der antigentest (kviktest) med i tallene indtil og med 2021-03-24T14:00:00
+
+## [1.1.0] - 2021-03-10T14:00:00
+### Tilføjet
+- Antigentest (kviktest) tilføjes til positive og totalt antal test. 
+
+**slutning af dansk version**
+
+**English version**
+
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [8.0.0] - 2025-05-13T14:00:00
+### Changed
+- From the 13th of May, all files that include a timestamp will display it only in the header and the rows of that column will be empty.
+
+## [7.0.0] - 2025-03-19T14:00:00
+### Removed
+- The maps "Positiv procent de seneste 7 dage" and "PCR-testede de seneste 7 dage" have been removed.
+- The figures "Testede pr. 100.000 borgere fordelt på køn", "Bekræftede tilfælde pr. 100.000 borgere pr. Køn" and "Nye indlæggelser pr. 100.000 fordelt på køn" have been removed.
+- The data will still be available for download in the zip file.
+
+## [6.1.0] - 2025-02-18T14:00:00
+### Changed
+- Bugfix: If data is run on a monday the number of positive cases and the positive percentage is now included from the week before.
+
+## [6.0.1] - 2025-01-28T14:00:00
+### Changed
+- We have adjusted all figures so that the individual lines can be seen better. The shadow under the lines has been removed
+
+## [6.0.0] - 2024-08-28T14:00:00
+### Removed
+- On the 28th of August 2024 and onwards the variant file [29_variant_tabel.xlsx] will no longer be in the zip file. 
+
+## [5.1.0] - 2024-04-24T14:00:00
+### Added
+- As of April 24th, this dashboard includes the figures from Virusmåling i Danmark. This means that the number of both tests and infections has increased, also backwards in time.
+
+## [5.0.2] - 2023-11-15T14:00:00
+### Added
+- new link to desktop version from mobile version under "mere": "Vis desktopversion"
+
+## [5.0.1] - 2023-11-01T14:00:00
+### Added
+- It is now possible to download underlying data directly from the dashboard as csv files.
+
+## [5.0.0] - 2023-09-13T14:00:00
+### Removed
+The following items have been removed from the dashboard:
+- From Wednesday 13 September 2023, it is no longer possible to follow the key figures 'ændringer siden sidste opdatering'.
+The following files in the zip file will be deleted:
+- The file 01_noegle_tal.csv is no longer published
+
+## [3.1.0] - 2023-09-06T14:00:00
+### Changed
+- The layout of the regional covid-19 dashboard's phone version has changed: The number of figures shown is now reduced, and they are not interactive with the region list. Key numbers are only shown on national level.
+
+## [3.0.3] - 2023-07-19T14:00:00
+### Changed
+- Internal changes
+
+## [3.0.2] - 2023-07-12T14:00:00
+### Changed
+- The date format is now synchronised in all csv files: YYYY-MM-DD
+
+## [3.0.1] - 2023-06-28T14:00:00
+### Changed
+- The terminology 'nyindlagte' is changed to 'nye indlæggelser' in the column names in the csv files as well as in the figure names on the regional covid-19 dashboard.
+
+## [3.0.0] - 2023-06-21T14:00:00
+### Changed
+After week 24, hospital occupancy data will no longer be published on SSI’s regional covid-19 dashboard.
+In addition, going forward, new covid-19-related admissions will solely be based on the National Patient Register, instead of a combination of data from the National Patient Register (Landspatientregisteret) and data reported by the Regions.
+So far, new covid-19-related hospitalizations have been based on a combination of data from the National Patient Register (Landspatientregisteret) and so-called snapshot data reported by the Regions.
+This change in data also applies retrospectively and means that there will be a downward adjustment for time series with new covid-19-related admissions back in time for the entire pandemic period. 
+The effects for the regional covid-19 dashboard and the corresponding zippers are listed below:
+
+The following files in the zippers will have fewer columns or are discontinued:
+- File 02_hospitalsbelaegning.csv is no longer available
+- File 11_noegletal_pr_region_pr_aldersgruppe.csv12_noegletal_pr_region_pr_aldersgruppe_de_seneste_7_dage.csv: column "Indlagte på intensiv afdeling" is no longer available
+- File 15_indlagte_pr_region_pr_dag.csv is no longer available 
+- File 12_noegletal_pr_region_pr_fnkt_alder.csv: column "Indlagte på intensiv afdeling" is no longer available
+- File 21_noegletal_pr_region_pr_fnkt_alder.csv: column "Indlagte på intensiv afdeling" is no longer available
+- File 22_noegletal_pr_region_pr_fnkt_alder_de_seneste_7_dage.csv: column "Indlagte på intensiv afdeling" is no longer available
+- File 25_indl_varighed_dag_region.csv is no longer available
+- File 26_indl_varighed_uge_region_alder.csv is no longer available
+
+The following figures are removed from the dashboard:
+- Figure Nye indlæggelser pr. dag fordelt på korte og lange indlæggelser
+- Figure Nye indlæggelser fordelt på aldersgrupper (korte indlæggelser, <12 timer)
+- Figure Nye indlæggelser fordelt på aldersgrupper (korte indlæggelser, >12 timer)
+- Figure Hospitalsbelægning: Indlæggelser pr. dag
+
+The following columns in the zipper files, going forward, only contain data from the National Patient Register/Landspatientregisteret (and will therefore change back in time):
+- File 03_bekraeftede_tilfaelde_doede_indlagte_pr_dag_pr_koen.csv: column "Indlæggelser" and column "Kummuleret antal indlæggelser"
+- File 04_indlagte_pr_alders_grp_pr_region.csv: column "Indlæggelser" 
+- File 06_nye_indlaeggelser_pr_region_pr_dag.csv: column "Dato"
+- File 11_noegletal_pr_region_pr_aldersgruppe.csv: column "Indlagte"
+- File 12_noegletal_pr_region_pr_aldersgruppe_de_seneste_7_dage.csv: column "Indlagte" 
+- File 17_koen_uge_testede_positive_nyindlagte.csv: column "Nyindlagte pr. 100.000 borgere" and "Uge"
+- File 18_fnkt_alder_uge_testede_positive_nyindlagte.csv: column "Nyindlagte pr. 100.000 borgere" and "Uge"
+- File 19_indlagte_pr_fnkt_alder_pr_region.csv: column "Indlæggelser"
+- File 21_noegletal_pr_region_pr_fnkt_alder.csv: column "Indlagte"
+- File 27_indl_kategori_dag_region.csv: column "Dato"
+ 
+The following figures on the dashboard will change back in time, as they use variables which now only contain data from the National Patient Register/Landspatientregisteret:
+- Figure Testede pr. 100.000 borgere fordelt på aldersgrupper (nationalt)
+- Figure Bekræftede tilfælde i alt pr. 100.000 borgere fordelt på aldersgrupper (nationalt)
+- Figure Positive i procent af antal testede pr. uge fordelt på alder (nationalt)
+- Figure Testede pr. 100.000 borgere fordelt på køn (nationalt)
+- Figure Bekræftede tilfælde i alt pr. 100.000 borgere fordelt på køn (nationalt)
+- Figure Nye indlæggelser pr. dag
+- Figure Nye indlæggelser med og på grund af covid-19 
+- Figure Nyindlagte pr. 100.000 borgere fordelt på aldersgrupper (nationalt)
+- Figure Nyindlagte pr. 100.000 borgere fordelt på køn (nationalt)
+
+
+## [2.10.2] - 2023-05-03T14:00:00
+### Changed
+- Figure changed: "Første infektioner og reinfektioner opgjort på prøvetagningsdato". The figure is now called "Første infektioner og reinfektioner opgjort på prøvetagningsuge". The time series shows a new type of case: "positive testede fordelt på første infektioner, første reinfektioner og to eller flere reinfektioner" since week 9 in 2020.  The data is shown per week. 
+- Tabel changed: The following new collumns where added in table 23_reinfektioner_uge_region.csv:  "Første reinfektion", "To eller flere reinfektioner"
+- Tabel changed: Table 24_reinfektioner_daglig_region.csv is renamed to 24_reinfektioner_ugentlig_region.csv. Instead of "Prøvedato", "Uge" is shown now. The column "Infected" is now renamed to "Antal tilfælde". 
+
+## [2.10.1] - 2023-04-26T14:00:00
+### Added
+- New figure added: Positive i procent af antal testede pr. uge fordelt på alder (nationalt). Timeseries of positive percent: number of people with positive PCR test results in total over number of all tested, grouped by funcitonal age groups since week 5 in 2020, shown per week.
+
+## [2.10.0] - 2023-04-12T14:00:00
+### Added 
+- A new file with variant data (29_variant_tabel.xlsx) is now included in the zip file. There are no changes to the dashboard.
+
+## [2.9.0] - 2023-04-05T14:00:00
+### Added
+- A new file with nursing home data (plejehjem_ugeoversigt.csv) is now included in the zip file. There er no changes to the dashboard.
+### Changed
+- Column names corrected from 'Bekæftede tilfælde beboere' to 'Bekræftede tilfælde beboere', from 'Dødsfald blandt bekæftede beboere' to 'Dødsfald blandt bekræftede beboere' and from 'Plejehjem med bekæftede tilfælde' to 'Plejehjem med bekræftede tilfælde'
+
+## [2.8.0] - 2023-03-28T14:00:00
+### Changed
+- SSI scales down the update frequency of the regional covid-19-dashboard: From Wednesday week 13, the covid-19-dashboard will be updated weekly every Wednesday.
+
+
+## [2.7.4] - 2023-03-21T14:00:00
+### Ændret
+- From Tuesday 21 March 2023, the two groups of figures on the regional covid-19 dashboard showing tested, hospitalizations and deaths have been re-categorised. 
+  All figures dealing with test activity and confirmed cases can now be found in the upper figure window on the right side.  
+  Views relating to admissions and deaths can be found in the lower figure window on the right.
+
+
+## [2.7.3] - 2023-02-22T14:00:00
+### Changed
+- The header text on graphs, that show national level numbers (not interactive with region filter), now have '(nationalt)' in the graph title.
+- Fixed bug: Interactive figures and numbers are now linked correctly so that selecting a region shows the corresponding data.
+- Fixed bug: The figure 'Hospitalsbelægning: Indlæggelser pr. dag' is now again interactive with the region selection list in the desktop version of the dashboard.
+
+## [2.7.2] - 2023-02-20T14:00:00
+### Changed
+- Missing region codes are now added to the files 07_antal_doede_pr_dag_pr_region.csv and 25_indl_varighed_dag_region.csv
+
+## [2.7.1] - 2023-02-14T17:00:00
+### Changed
+- Fixed bug: Interactive figures and numbers are now linked correctly so that selecting a region shows the corresponding data. 
+
+## [2.7.0] - 2023-01-30T14:00:00
+### Added 
+- The CSV files in the zip-file now contains the region code as well as the region name.
+
+## [2.6.2] - 2023-01-10T15:00:00
+### Changed 
+- The design of the mobile version of the dashboard has been improved. Key numbers are now more readable. 
+
+## [2.6.1] - 2022-12-13T14:00:00
+### Changed 
+- The design of the dashboard is updated. Key numbers are more readable in the most used display zoom levels.
+
+## [2.6.0] - 2022-11-22T14:00:00
+### Removed
+- Accumulated key numbers that cover the whole covid-19 pandemic are removed from the dashboard as well as the figures which show the accumulated sums.
+
+## [2.5.1] - 2022-10-14T14:00:00
+### Changed
+- bugfix: the method for calculation of population has been corrected. See the operationstatuslog_regionalt_db.txt file for further information.
+
+## [2.5.0] - 2022-10-13T14:00:00
+### Added
+- the figure 'Indlæggelser med og på grund af covid-19' and the corresponding data file 27_indl_kategori_dag_region.csv was added to the dashboard.
+
+## [2.4.0] - 2022-09-01T14:00:00
+### Removed
+- The figure 'Mistænkte tilfælde pr. dag' is removed from the dashboard, since antigen tests are no longer a part of the test strategy. The data behind the figure is still updated and available in the zip-file. 
+
+## [2.3.0] - 2022-06-03T14:00:00
+### Changed
+- The numbers are only published on business days. 
+
+## [2.2.0] - 2022-06-01T14:00:00
+### Changed
+- bugfix: Changes in admissions since last update will now be correct even if the admission numbers are not updated every day.
+
+## [2.1.0] - 2022-05-25T14:00:00
+### Added
+- Added the collumn "Sidste opdatering" in the file 00_Noegletal.
+
+## [2.0.0] - 2022-05-18T14:00:00
+### Added 
+- changelog.md file which contains .
+
+## [1.3.0] - 2021-12-15T14:00:00
+### Added
+- Covid-19 reinfection are now included from 13th December 2021. A small jump in data will be noticable on the 13th December 2021. 
+
+## [1.2.0] - 2021-03-23T14:00:00
+### Added
+- Antigen tests has been removed from positive and total number of tests. Due to delay in the numbers antigen test are included untill 2021-03-24T14:00:00
+
+## [1.1.0] - 2021-03-10T14:00:00
+### Added
+- Antigen tests has been added to positive and total number of tests. 
+
+**end of English version**

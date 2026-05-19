@@ -1,0 +1,177 @@
+﻿# Driftslog
+
+**English version below the Danish version**
+
+Alle betydelige hændelser i driftsituationen, der har betydning for covid-19 tallene bliver dokumenteret i denne fil.
+
+Formatet in filen er: 
+## [Tidspunkt for hændelsen (fra hvornår det havde betydning for tallene)]
+"[Hændelsens betydning for tallene]", [hændelsens periode], "[hændelsens note på hjemmeside og/eller dashboardet]"
+
+## 2025-05-28T14:00:00
+"Der kommer ingen opdateringer af data", 2025-05-28T14:00:00/2025-06-04T13:59:59, "SSI’s interaktive dashboards bliver ikke er opdateret med ny data onsdag d. 28. maj 2025. Dette skyldes en igangværende serverflytning. Det forventes, at data vil være opdateret og køre som vanligt fra uge 23, onsdag d. 4. juni 2025. Vi beklager ulejligheden."
+
+## 2025-02-05T14:00:00
+"Der er ikke kommet tal for døde siden uge 51", 2024-12-18T14:00:00/2025-02-05T13:59:59, "Grundet tekniske problemer har antal dødsfald ikke været opdateret siden d. 17. december 2024. De manglende dødsfald er indhentet i datagrundlaget og med i opgørelser fra og med tirsdag d. 4. februar 2025. Dette giver en øget stigning i dødsfald denne uge."
+
+## 2025-01-15T14:00:00
+"Tal for indlæggelser er lavere end det kunne forventes, da de er fra 11. januar, hvorimod smittetal er fra 13. januar.", 2025-01-15T14:00:00/2025-01-22T13:59:59,  "Midlertidigt ændret opdateringsfrekvens. Pga. tekniske problemer vil SSI’s interaktive dashboards for nuværende blive opdateret med data fra om mandagen i stedet for om tirsdagen, som vanligt. Vær opmærksom på, at indlæggelsesdata sidste gang er opdateret d. 11. januar 2025, mens smittedata er opdateret d. 13. januar 2025. "
+
+## 2025-01-08T14:00:00
+"Ingen indlæggelsestal", 2024-12-18T14:00:00/pågår stadig, "SSI oplever tekniske problemer, som medfører, at vi ikke kan udgive data for indlæggelser. Der arbejdes på at løse problemet."
+
+## 2024-09-24T14:00:00
+"Tallene på dashboardet er fra 16. september 2024 og ikke fra 17. september 2024, som de normalt skulle være. Det skyldes en fejl i et bagvedliggende system, der leverer infektiondata. Vi beklager ulejligheden."
+
+## 2024-06-19T14:00:00
+"Vær opmærksom på, at SSI’s interaktive dashboards ikke er opdaterede med nyeste data onsdag d. 19. juni 2024. Dette skyldes en igangværende serverflytning. Vi forventer, at data vil være opdateret og køre som vanligt fra næste uge, onsdag d. 26. juni 2024. Vi beklager ulejligheden"
+
+## 2024-03-06T14:00:00
+"Pga. tekniske problemer er SSI’s interaktive dashboards opdaterede med data fra i mandags d. 4. marts 2024, og ikke tirsdags, som vanligt. Vi arbejder på at løse problemet til næstes uges opdatering." 
+
+## 2023-09-06T14:00:00
+"Pga. tekniske problemer er indlæggelsestal i dag ikke fuld opdateret", 2023-09-06T14:00:00/2023-09-13T13:59:59, "Pga. tekniske problemer er indlæggelsestal i dag ikke opdateret. Indlæggelsesdata er sidst opdateret d. 3. september. Det betyder, at visninger og nøgletal indeholdende indlæggelsestal er underestimeret. Vi arbejder på at løse problemet til næste uges opdatering. Vi beklager ulejligheden."
+
+## 2023-06-28T14:00:00
+"Tallene på det regionale dashboard blev ikke opdateret", 2023-06-28T14:00:00/2023-07-03T17:00:00, "På grund af tekniske problemer bliver dashboardet ikke opdateret i dag. Det forventes, at dashboardet bliver opdateret torsdag 29. juni 2023."
+
+## 2023-03-28T14:00:00
+"SSI nedskalerer opdateringsfrekvensen af det  regionale covid-19-dashboard. Fra onsdag uge 13 opdateres det regionale covid-19-dashboard ugentligt hver onsdag", 2023-03-28T14:00:00/2023-04-07T13:59:59, "SSI nedskalerer frekvensen af det regionale covid-19-dashboard og RSV- og influenzadashboardet: Fra onsdag uge 13 opdateres det regionale covid-19-dashboard samt RSV og influenzadashboardet ugentligt hver onsdag. Det nationale covid-19-nøgletalsdashboard fortsætter med daglige opdateringer."
+
+## 2023-03-27T14:00:00
+"'Hospitalsbelægning: status' er i dag ikke indrapporteret for Sjælland og Hovedstaden og derfor er landstallene også for lave.", 2023-03-27T14:00:00/2023-03-28T13:59:59, "Vær opmærksom på, at indlæggelsestallene d.d. er underestimeret pga. tekniske problemer." 
+
+## 2023-02-03T14:00:00
+"Tal for nye indlæggelser og tal, der bygger på nye indlæggelser, er ikke retvisende.", 2023-02-03T14:00:00/2023-02-04T13:59:59, "Grundet akut servicevinduet hos ekstern leverandør d.02.02.23 oplever vi fortsat tekniske udfordringer. Derfor er tal for nyindlæggelser i dag ikke retvisende." 
+
+## 2023-02-02T14:00:00
+"Pga. tekniske problemer hos en ekstern leverandør er dagens tal ikke opdateret.", 2023-02-02T14:00:00/2023-02-03T13:59:59, "Pga. tekniske problemer hos en ekstern leverandør er dagens tal ikke opdateret. Vi arbejder på at løse problemet. Vi beklager ulejligheden." 
+
+## 2023-01-16T14:00:00
+"Pga. tekniske problemer hos en ekstern leverandør er dagens tal ikke opdateret.", 2023-01-16T14:00:00/2023-01-17T13:59:59, "Pga. tekniske problemer hos en ekstern leverandør er dagens tal ikke opdateret. Vi arbejder på at løse problemet. Vi beklager ulejligheden." 
+
+## 2023-01-04T14:00:00
+"Bemærk: 'Hospitalsbelægning: ændring' er ikke opdateret i dag på grund af tekniske problemer.", 2023-01-04T14:00:00/2023-01-05T13:59:59, "Bemærk: 'Hospitalsbelægning: ændring' er ikke opdateret i dag på grund af tekniske problemer."
+
+## 2022-12-30T14:00:00
+"På grund af tekniske problemer med indlæggelsestallene bliver der ikke offentliggjort regionale covid-19-data i dag.", 2022-12-29T14:00:00/2022-12-30T13:59:59, "På grund af tekniske problemer med indlæggelsestallene bliver der ikke offentliggjort regionale covid-19-data i dag."
+
+## 2022-12-29T14:00:00
+"Dagens data er ikke opdateret pga. af en teknisk fejl.", 2022-12-29T14:00:00/2022-12-20T13:59:59, "D. 29. december 2022 er dagens data ikke opdateret pga. af en teknisk fejl."
+
+## 2022-11-21T14:00:00
+"Pga. en teknisk fejl i sidste uge er antal døde i dag overestimeret.", 2022-11-21T14:00:00/2022-11-22T13:59:59, "Pga. en teknisk fejl i sidste uge er antal døde i dag overestimeret. Vi beklager fejlen."
+
+## 2022-11-18T14:00:00
+"Antal døde i dag er underestimeret. Pga. fejlen forventer vi, at antallet af dødsfald næste uge vil blive overestimeret.", 2022-11-18T14:00:00/2022-11-21T13:59:59, "Pga. en teknisk fejl er antal døde i dag underestimeret. Pga. fejlen forventer vi, at antallet af dødsfald næste uge vil blive overestimeret. Vi beklager fejlen og arbejder på at løse problemet."
+
+## 2022-10-13T15:25:00
+"På grund af en fejl i beregningen af befolkningstal, har der været måneder, hvor en række incidensopgørelserne over tid har været forkerte. Fejlen blev udbedret på dashboardet 2022-10-13T15:25:00 og i zip-filen 2022-10-14T14:00:00", 2021-06-01T14:00:00/2022-10-13T15:25:00, "Følgende filer i zip-filen har haft fejl: 17_koen_uge_testede_positive_nyindlagte.csv, 18_fnkt_alder_uge_testede_positive_nyindlagte.csv, 23_reinfektioner_uge_region.csv i følgende perioder: uger i 2021 juni, 2021 august, 2022 marts, 2022 september. På dashboardet er der tale om følgende figurer på det regionale dashboard: 'Testede pr. 100.000 borgere fordelt på køn', 'Bekræftede tilfælde i alt pr. 100.000 borgere fordelt på køn', 'Nyindlagte pr. 100.000 borgere fordelt på køn', 'Første infektioner og reinfektioner opgjort på prøvetagningsdato', 'Testede pr. 100.000 borgere fordelt på aldersgrupper', 'Bekræftede tilfælde i alt pr. 100.000 borgere fordelt på aldersgrupper', 'Nyindlagte pr. 100.000 borgere fordelt på aldersgrupper'"
+
+## 2022-05-30T14:00:00
+"Der er fejl i dagens tal under 'Hospitalsbelægning: ændring' - 'Ændring i antal indlæggelser'. Det korrekte tal er 20 for hele landet. Det korrekte tal for ændring i intensivindlæggelser er 1 for hele landet.", 2022-05-30T14:00:00/2022-05-31T13:59:59, "Der er fejl i dagens tal under 'Hospitalsbelægning: ændring' - 'Ændring i antal indlæggelser'. Det korrekte tal er 20 for hele landet. Det korrekte tal for ændring i intensivindlæggelser er 1 for hele landet. Tallet for ændring i indlagte (0) i respirator er korrekt på landsplan. Ændringerne er siden lørdag d. 28. maj 2022. --- Fejl i dagens tal for ændring i indlæggelser. I zipfilen overvaagningsdata-dashboard-covid19-30052022-lk61.zip er der fejl i følgende filer: 
+	* 01_noegletal.csv - feltet 'Ændring i indlæggelser siden sidste opdatering' skulle være 20 og feltet 'Ændring i indlæggelser (intensiv) siden sidste opdatering' skulle være 1.
+	* 02_hospitalsbelaegning.csv - feltet 'Ændring i antal indlagte' og 'Ændring i antal indlagte på intensiv i respirator' indenholder fejl."
+
+## 2022-05-25T14:00:00
+"Dagens data dækker kun 18 timer", 2022-05-25T14:00:00/2022-05-26T13:59:59, "På grund af teknisk fejl i går, er data underestimeret og dækker i dag kun 18 timer mod de normale 24 timer."
+
+## 2022-05-23T14:00:00
+"Ingen nye tal mandag 23. maj 2022, pga flytning af IT-infrastruktur. Tallene påvirkes kun midlertidig og vil være korrekte og opdaterede igen efter hændelsen.", 2022-05-23T14:00:00/2022-05-24T13:59:59, "Bemærk: På grund af forlængelse af servicevinduet udgives der ikke data mandag d. 23. maj 2022. Den 20.-22. maj 2022 blev SSI’s produktionsservere nemlig flyttet til Statens IT. Som led i flytningen blev der i denne periode ikke publiceret overvågningsdata og -tal på SSI’s dashboards eller som filer til download på SSI’s hjemmeside. Overvågningsdata forventes at blive udgivet igen i morgen d. 24. maj 2022, hvor der vil blive vist forskellen siden torsdag d. 19. maj 2022."
+
+## 2022-05-20T14:00:00
+"Ingen nye tal fredag 19. maj 2022, pga flytning af IT-infrastruktur. Tallene påvirkes kun midlertidig og vil være korrekte og opdaterede igen efter hændelsen.", 2022-05-20T14:00:00/2022-05-23T13:59:59, "Bemærk: Den 20.-22. maj 2022 udgives der ikke overvågningsdata og -tal på SSI’s dashboards eller som filer på downloadsiden på www.ssi.dk. Dette skyldes en større flytning af SSI’s produktionsservere til Statens IT. Det betyder også, at nøgletallene mandag den 23. maj 2022 vil indeholde data siden torsdag den 19. maj 2022."
+
+### 2021-12-22T14:00:00 
+"8000 prøvesvar fra Hovedstaden og Sjælland har fået 'inkonklusivt' prøvesvar", 2021-12-22T14:00:00/2021-12-22T13:59:59, "Bemærk: Onsdag 22. december 2021 Som følge af laboratoriefejl i TCD er 8000 prøvesvar fra Hovedstaden og Sjælland påvirket. Læs mere her: https://www.ssi.dk/aktuelt/nyheder/2021/har-mattet-melde-8000-prover-ud-med-svaret-inkonklusivt "
+
+**slutning af dansk version**
+
+**English version**
+
+# Operation status log
+
+This log contains all significant issues that affected the covid-19 numbers.
+
+The format in the file is as follows: 
+## [Date and time for the incident (from when it was affecting the number)]
+"[How the incident affects the numbers]", [the timeframe of the incident], "[the incident note on the homepage and/or the dashboard]"
+
+## 2025-05-28T14:00:00
+"There will be no data updates", 2025-05-28T14:00:00/2025-06-04T13:59:59, "SSI’s interaktive dashboards bliver ikke er opdateret med ny data onsdag d. 28. maj 2025. Dette skyldes en igangværende serverflytning. Det forventes, at data vil være opdateret og køre som vanligt fra uge 23, onsdag d. 4. juni 2025. Vi beklager ulejligheden."
+
+## 2025-02-05T14:00:00
+"There hasn't been any numbers on deaths since week 51", 2024-12-18T14:00:00/2025-02-05T13:59:59, "Due to technical issues number of deaths have not been updated since 17th of December 2024. The missing deaths are now in the data and shown from 4th Februar 2025. Due to that there is an increased rise in number of deaths this week."
+
+## 2025-01-15T14:00:00
+"Numbers for admissions are lower than would be expected since the numbers are from 11th of January 2025 whereas infection numbers are from 13th of January.", 2025-01-15T14:00:00/2025-01-22T13:59:59, "Midlertidigt ændret opdateringsfrekvens. Pga. tekniske problemer vil SSI’s interaktive dashboards for nuværende blive opdateret med data fra om mandagen i stedet for om tirsdagen, som vanligt. Vær opmærksom på, at indlæggelsesdata sidste gang er opdateret d. 11. januar 2025, mens smittedata er opdateret d. 13. januar 2025. "
+
+## 2025-01-08T14:00:00
+"No data for hospital admittances", 2024-12-18T14:00:00/ongoing, "Technical problems make SSI unable to include data for hospital admittances."
+
+## 2024-09-24T14:00:00
+"The numbers on the dashboard are from September 16, 2024 and not from September 17, 2024 as they should normally be. This is due to an error in an underlying system that provides infection data. We apologize for the inconvenience."
+
+## 2024-06-19T14:00:00
+"Please note that SSI's interactive dashboards are not updated with the latest data on Wednesday 19th June 2024. This is due to an ongoing server move. We expect data to be up to date and running as usual from the following week, Wednesday 26th. June 2024. We apologize for the inconvenience"
+
+## 2024-03-06T14:00:00
+"Due to technical problems, SSI's interactive dashboards are updated with data from Monday, March 4, 2024, and not Tuesday, as usual. We are working on solving the problem for next week's update."
+
+## 2023-09-06T14:00:00
+"Due to technical issues admission data are not fully updated today.", 2023-09-06T14:00:00/2023-09-13T13:59:59, "Pga. tekniske problemer er indlæggelsestal i dag ikke opdateret. Indlæggelsesdata er sidst opdateret d. 3. september. Det betyder, at visninger og nøgletal indeholdende indlæggelsestal er underestimeret. Vi arbejder på at løse problemet til næste uges opdatering. Vi beklager ulejligheden."
+
+## 2023-06-28T14:00:00
+"Numbers on the regional dashboard was not updated.", 2023-06-28T14:00:00/2023-07-03T17:00:00, "På grund af tekniske problemer bliver dashboardet ikke opdateret i dag. Det forventes, at dashboardet bliver opdateret torsdag 29. juni 2023."
+
+## 2023-03-28T14:00:00
+"SSI scales down the update frequency of the regional covid-19-dashboard: From Wednesday week 13, the regional covid-19-dashboard will be updated weekly every Wednesday.", 2023-03-28T14:00:00/2023-04-07T13:59:59, "SSI nedskalerer frekvensen af det regionale covid-19-dashboard og RSV- og influenzadashboardet: Fra onsdag uge 13 opdateres det regionale covid-19-dashboard samt RSV og influenzadashboardet ugentligt hver onsdag. Det nationale covid-19-nøgletalsdashboard fortsætter med daglige opdateringer."
+
+## 2023-03-27T14:00:00
+"'Hospitalsbelægning: status' are not updated from the 'Sjælland' and 'Hovedstaden' regions and the national sums of therefore also too low 'Hospitalsbelægning: status'", 2023-03-27T14:00:00/2023-03-28T13:59:59, "Vær opmærksom på, at indlæggelsestallene d.d. er underestimeret pga. tekniske problemer." 
+
+## 2023-02-03T14:00:00
+"Admission numbers and other numbers that are based on admission numbers are not correct today.", 2023-02-03T14:00:00/2023-02-04T13:59:59, "Grundet akut servicevinduet hos ekstern leverandør d.02.02.23 oplever vi fortsat tekniske udfordringer. Derfor er tal for nyindlæggelser i dag ikke retvisende." 
+
+## 2023-02-02T14:00:00
+"Due to technical issues at an external data provider data is not updated today.", 2023-02-02T14:00:00/2023-02-03T13:59:59, "Pga. tekniske problemer hos en ekstern leverandør er dagens tal ikke opdateret. Vi arbejder på at løse problemet. Vi beklager ulejligheden." 
+
+## 2023-01-16T14:00:00
+"Due to technical issues at an external partner data is not updated today.", 2023-01-16T14:00:00/2023-01-17T13:59:59, "Pga. tekniske problemer hos en ekstern leverandør er dagens tal ikke opdateret. Vi arbejder på at løse problemet. Vi beklager ulejligheden." 
+
+## 2023-01-04T14:00:00
+"Please note: 'admissions: changes' is not updated today due to technical problems.", 2023-01-04T14:00:00/2023-01-05T13:59:59, "Bemærk: 'Hospitalsbelægning: ændring' er ikke opdateret i dag på grund af tekniske problemer."
+
+## 2022-12-30T14:00:00
+"Due to technical issues there is no regional covid-19 data today", 2022-12-29T14:00:00/2022-12-30T13:59:59, "På grund af tekniske problemer med indlæggelsestallene bliver der ikke offentliggjort regionale covid-19-data i dag."
+
+## 2022-12-29T14:00:00
+"Due to technical issues the dashboard was not updated today.", 2022-12-29T14:00:00/2022-12-20T13:59:59, "D. 29. december 2022 er dagens data ikke opdateret pga. af en teknisk fejl."
+
+## 2022-11-21T14:00:00
+"Due to technical issues today's numbers are overestimated.", 2022-11-21T14:00:00/2022-11-22T13:59:59, "Pga. en teknisk fejl i sidste uge er antal døde i dag overestimeret. Vi beklager fejlen."
+
+## 2022-11-18T14:00:00
+" The number of deaths are underestimated today. Because of this, we expect the number of deaths to be overestimated next week.", 2022-11-18T14:00:00/2022-11-21T13:59:59, "Pga. en teknisk fejl er antal døde i dag underestimeret. Pga. fejlen forventer vi, at antallet af dødsfald næste uge vil blive overestimeret. Vi beklager fejlen og arbejder på at løse problemet."
+
+## 2022-10-13T15:25:00
+"Due to a calculation error of the population data there have been months where incidens numbers over time have been incorrect. The error was corrected on the dashboard 2022-10-13T15:25:00 and in the zip file 2022-10-14T14:00:00", 2021-06-01T14:00:00/2022-10-13T15:25:00, "The following files in the zip file has been affected: 17_koen_uge_testede_positive_nyindlagte.csv, 18_fnkt_alder_uge_testede_positive_nyindlagte.csv, 23_reinfektioner_uge_region.csv in the following periods: weeks in June 2021, August 2021, March 2022, September 2022. On the dashboard the following figures have been affected and corrected: 'Testede pr. 100.000 borgere fordelt på køn', 'Bekræftede tilfælde i alt pr. 100.000 borgere fordelt på køn', 'Nyindlagte pr. 100.000 borgere fordelt på køn', 'Første infektioner og reinfektioner opgjort på prøvetagningsdato', 'Testede pr. 100.000 borgere fordelt på aldersgrupper', 'Bekræftede tilfælde i alt pr. 100.000 borgere fordelt på aldersgrupper', 'Nyindlagte pr. 100.000 borgere fordelt på aldersgrupper'"
+
+## 2022-05-30T14:00:00
+"The number for admissions since last update are incorrect.", 2022-05-30T14:00:00/2022-05-31T13:59:59, "Der er fejl i dagens tal under 'Hospitalsbelægning: ændring' - 'Ændring i antal indlæggelser'. Det korrekte tal er 20 for hele landet. Det korrekte tal for ændring i intensivindlæggelser er 1 for hele landet. Tallet for ændring i indlagte (0) i respirator er korrekt på landsplan. Ændringerne er siden lørdag d. 28. maj 2022. --- Fejl i dagens tal for ændring i indlæggelser. I zipfilen overvaagningsdata-dashboard-covid19-30052022-lk61.zip er der fejl i følgende filer: 
+	* 01_noegletal.csv - feltet 'Ændring i indlæggelser siden sidste opdatering' skulle være 20 og feltet 'Ændring i indlæggelser (intensiv) siden sidste opdatering' skulle være 1.
+	* 02_hospitalsbelaegning.csv - feltet 'Ændring i antal indlagte' og 'Ændring i antal indlagte på intensiv i respirator' indenholder fejl."
+
+## 2022-05-25T14:00:00
+"Today's data only covers 18 hours", 2022-05-25T14:00:00/2022-05-26T13:59:59, "På grund af teknisk fejl i går, er data underestimeret og dækker i dag kun 18 timer mod de normale 24 timer."
+
+## 2022-05-23T14:00:00
+"No new numbers Monday 23. May 2022 due to IT infrastructure work. The numbers are only temporarily affected and will be correct and updated when the incident has ended.", 2022-05-23T14:00:00/2022-05-24T13:59:59, "Bemærk: På grund af forlængelse af servicevinduet udgives der ikke data mandag d. 23. maj 2022. Den 20.-22. maj 2022 blev SSI’s produktionsservere nemlig flyttet til Statens IT. Som led i flytningen blev der i denne periode ikke publiceret overvågningsdata og -tal på SSI’s dashboards eller som filer til download på SSI’s hjemmeside. Overvågningsdata forventes at blive udgivet igen i morgen d. 24. maj 2022, hvor der vil blive vist forskellen siden torsdag d. 19. maj 2022."
+
+## 2022-05-20T14:00:00
+"No new numbers Friday 19th of May 2022 due to IT infrastructure work. The numbers are only temporarily affected and will be correct and updated when the incident has ended.", 2022-05-20T14:00:00/2022-05-23T13:59:59, "Bemærk: Den 20.-22. maj 2022 udgives der ikke overvågningsdata og -tal på SSI’s dashboards eller som filer på downloadsiden på www.ssi.dk. Dette skyldes en større flytning af SSI’s produktionsservere til Statens IT. Det betyder også, at nøgletallene mandag den 23. maj 2022 vil indeholde data siden torsdag den 19. maj 2022."
+
+### 2021-12-22T14:00:00 
+"8000 test from the 'Hovedstaden' and 'Sjælland' have recieved a 'inconclusive' test result.", 2021-12-22T14:00:00/2021-12-22T13:59:59, "Bemærk: Onsdag 22. december 2021 Som følge af laboratoriefejl i TCD er 8000 prøvesvar fra Hovedstaden og Sjælland påvirket. Læs mere her: https://www.ssi.dk/aktuelt/nyheder/2021/har-mattet-melde-8000-prover-ud-med-svaret-inkonklusivt "
+
+**end of English version**

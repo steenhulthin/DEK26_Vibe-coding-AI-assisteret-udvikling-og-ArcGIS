@@ -1,0 +1,112 @@
+{
+  "type": "FeatureCollection",
+  "name": "denmark_regions_simple",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "region_code": "1081",
+        "region_name": "Nordjylland"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [8.5, 57.9],
+            [11.5, 57.9],
+            [11.5, 56.4],
+            [8.5, 56.4],
+            [8.5, 57.9]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "region_code": "1082",
+        "region_name": "Midtjylland"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [8.0, 56.4],
+            [10.6, 56.4],
+            [10.6, 55.4],
+            [8.0, 55.4],
+            [8.0, 56.4]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "region_code": "1083",
+        "region_name": "Syddanmark"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [8.0, 55.4],
+            [10.4, 55.4],
+            [10.4, 54.4],
+            [8.0, 54.4],
+            [8.0, 55.4]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "region_code": "1084",
+        "region_name": "Hovedstaden"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [11.8, 56.2],
+              [12.9, 56.2],
+              [12.9, 55.3],
+              [11.8, 55.3],
+              [11.8, 56.2]
+            ]
+          ],
+          [
+            [
+              [14.6, 55.3],
+              [15.2, 55.3],
+              [15.2, 54.9],
+              [14.6, 54.9],
+              [14.6, 55.3]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "region_code": "1085",
+        "region_name": "Sjælland"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [11.0, 55.8],
+            [12.4, 55.8],
+            [12.4, 54.6],
+            [11.0, 54.6],
+            [11.0, 55.8]
+          ]
+        ]
+      }
+    }
+  ]
+}

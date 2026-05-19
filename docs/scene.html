@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nordisk COVID-19 webscene</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --fg: #f0f6fc;
+      --fg-muted: rgba(240, 246, 252, 0.75);
+      --accent: #58a6ff;
+      --panel: rgba(22, 27, 34, 0.85);
+      --border: rgba(88, 134, 255, 0.2);
+      --shadow: 0 18px 40px rgba(3, 102, 214, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #111d2f, var(--bg) 55%);
+      color: var(--fg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 2rem clamp(1.25rem, 4vw, 3rem) 3rem;
+    }
+
+    header {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      box-shadow: var(--shadow);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+      line-height: 1.15;
+    }
+
+    header p {
+      margin: 1rem 0 0;
+      color: var(--fg-muted);
+      max-width: 70ch;
+    }
+
+    .scene-frame {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .scene-frame iframe {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      min-height: min(70vh, 800px);
+      background: #060b13;
+      box-shadow: var(--shadow);
+    }
+
+    .sources {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: clamp(1.25rem, 3vw, 2rem);
+      box-shadow: var(--shadow);
+    }
+
+    .sources h2 {
+      margin: 0 0 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    .sources p {
+      margin: 0 0 1.2rem;
+      color: var(--fg-muted);
+      max-width: 70ch;
+    }
+
+    .sources ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--fg-muted);
+    }
+
+    .sources li+li {
+      margin-top: 0.5rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .warning {
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 206, 86, 0.7);
+      background: rgba(255, 206, 86, 0.16);
+      color: #fff3cd;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 id="page-title">Nordisk COVID-19 webscene</h1>
+    <p id="page-description">
+      3D-visualisering af månedlige COVID-19 dødstal for de nordiske lande med
+      tidsregulator og ekstruderede polygoner. Opdater `scene-config` for at
+      pege på den seneste webscene.
+    </p>
+  </header>
+
+  <section class="scene-frame">
+    <iframe
+      id="scene-embed"
+      title="ArcGIS Online webscene | nordisk COVID-19"
+      allow="fullscreen; vr"
+      loading="lazy"
+      src=""
+    ></iframe>
+
+    <article class="sources">
+      <h2>Data og referencer</h2>
+      <p id="sources-intro">
+        Denne side embedder ArcGIS Online scenen sammen med de anvendte
+        datakilder.
+      </p>
+      <ul id="source-list"></ul>
+      <div id="scene-warning" class="warning" hidden>
+        Opdater <code>SCENE_ITEM_ID</code> i konfigurationen nederst på siden,
+        så embed viser den aktuelle webscene.
+      </div>
+    </article>
+  </section>
+
+  <script>
+    const SCENE_CONFIG = {
+      webSceneId: "5997027da2a347e6a36c648fddd93774",
+      instantAppUrl:
+        "https://sseruminstitut.maps.arcgis.com/apps/instant/3dviewer/index.html?appid=2848094d39d24e3496b57354f95ca070",
+      title: "Nordisk COVID-19 | tidsaktiveret 3D webscene",
+      description:
+        "Månedlige COVID-19 dødstal fra Our World In Data kombineret med Living Atlas geometri og nationale befolkningstal (2022). Brug tidsregulatoren for at se udviklingen.",
+      sourcesIntro:
+        "Datasættet er samlet til Dansk Esri Konference 2026 og viser beregnet dødelighed pr. 100.000 indbyggere.",
+      sources: [
+        {
+          label: "Our World in Data | COVID-19 dataset",
+          url: "https://ourworldindata.org/covid-deaths",
+        },
+        {
+          label:
+            "Living Atlas | World Countries (Generalized), Esri (2022)",
+          url: "https://www.arcgis.com/home/webscene/viewer.html?layers=2b93b06dc0dc4e809d3c8db5cb96ba69",
+        },
+        {
+          label:
+            "Nationale befolkningstal 2022 (Danmark, Finland, Island, Norge, Sverige)",
+          url: "../data/nordic_population_2022.csv",
+        },
+      ],
+    };
+
+    const frame = document.getElementById("scene-embed");
+    const titleEl = document.getElementById("page-title");
+    const descEl = document.getElementById("page-description");
+    const listEl = document.getElementById("source-list");
+    const introEl = document.getElementById("sources-intro");
+    const warningEl = document.getElementById("scene-warning");
+
+    titleEl.textContent = SCENE_CONFIG.title;
+    descEl.textContent = SCENE_CONFIG.description;
+    introEl.textContent = SCENE_CONFIG.sourcesIntro;
+
+    listEl.innerHTML = "";
+    (SCENE_CONFIG.sources || []).forEach((src) => {
+      const li = document.createElement("li");
+      if (src.url) {
+        const link = document.createElement("a");
+        link.href = src.url;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = src.label;
+        li.appendChild(link);
+      } else {
+        li.textContent = src.label;
+      }
+      listEl.appendChild(li);
+    });
+
+    const trimmedInstantApp = (SCENE_CONFIG.instantAppUrl || "").trim();
+    const trimmedId = (SCENE_CONFIG.webSceneId || "").trim();
+
+    if (trimmedInstantApp) {
+      frame.src = trimmedInstantApp;
+    } else if (trimmedId) {
+      const sceneViewer = new URL(
+        "https://www.arcgis.com/apps/sceneviewer/index.html"
+      );
+      sceneViewer.searchParams.set("webscene", trimmedId);
+      sceneViewer.searchParams.set("embed", "1");
+      sceneViewer.searchParams.set("locale", "da");
+      frame.src = sceneViewer.toString();
+    } else {
+      frame.removeAttribute("src");
+      warningEl.hidden = false;
+    }
+  </script>
+</body>
+
+</html>
