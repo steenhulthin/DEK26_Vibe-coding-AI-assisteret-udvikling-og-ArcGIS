@@ -1313,3 +1313,29 @@ User:
 Afklar NumPy/ArcGIS-fejl efter venv/ArcGIS Pro clone aktivering.
 Assistant:
 Forklarede at `_ARRAY_API not found` skyldes NumPy 2.2.5 i et miljo med ArcGIS/pyarrow/numexpr/scipy-binaries bygget mod NumPy 1.x, ikke selve dashboard-scriptet. Pinned `numpy<2` i requirements og tilfoejede README-fejlfinding for ArcGIS Pro clone.
+User:
+# Context from my IDE setup:
+
+## Active file: arcgis/dashboards/create_nordic_covid_dashboard.py
+
+## Open tabs:
+- create_nordic_covid_dashboard.py: arcgis/dashboards/create_nordic_covid_dashboard.py
+- README.md: README.md
+
+## My request for Codex:
+Dashboard on AGOL shows fatal error: can't access property "type", t is undefined. Asked what debugging info would help, including AGOL item JSON.
+Assistant:
+Confirmed that the AGOL Dashboard item JSON is the most useful artifact, because the script hand-builds Dashboard JSON and a missing nested `type` is likely. Requested dashboard item data, web map data, feature layer schema, and browser console/network context.
+User:
+# Context from my IDE setup:
+
+## Active file: arcgis/dashboards/create_nordic_covid_dashboard.py
+
+## Open tabs:
+- create_nordic_covid_dashboard.py: arcgis/dashboards/create_nordic_covid_dashboard.py
+- README.md: README.md
+
+## My request for Codex:
+Shared Dashboard JSON showing top-level `widgets`/`layout`, a `categorySelectorWidget`, and a `rootLayout`/`itemLayout` structure. Map itself looks good.
+Assistant:
+Identified the dashboard item JSON as an invalid simplified schema for AGOL Dashboards. Updated the publisher to emit a `desktopView`/`dockingLayout` structure with map, indicator, serial chart, and details widgets using feature service itemId/layerId data sources, and removed the invalid selector widget from the normal widget list.
