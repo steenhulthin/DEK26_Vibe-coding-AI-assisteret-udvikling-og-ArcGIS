@@ -1300,3 +1300,16 @@ User:
 Nu har jeg rettet ghpages lidt til. Tjek links (flere virker ikke) og opdater link til seneste powerpoint præsentation.
 Assistant:
 Genopbyggede praesentation-ressourcesiden med fungerende kort, indlejret video og opdateret PowerPoint-link (peger nu paa raw/main), bekraeftede at indexkortene aabner de nye undersider, og holdt Shiny-siden i sync med de to hostinglinks uden doede referencer.
+User:
+# Context from my IDE setup:
+
+## Active file: arcgis/dashboards/create_nordic_covid_dashboard.py
+
+## Open tabs:
+- create_nordic_covid_dashboard.py: arcgis/dashboards/create_nordic_covid_dashboard.py
+- README.md: README.md
+
+## My request for Codex:
+Afklar NumPy/ArcGIS-fejl efter venv/ArcGIS Pro clone aktivering.
+Assistant:
+Forklarede at `_ARRAY_API not found` skyldes NumPy 2.2.5 i et miljo med ArcGIS/pyarrow/numexpr/scipy-binaries bygget mod NumPy 1.x, ikke selve dashboard-scriptet. Pinned `numpy<2` i requirements og tilfoejede README-fejlfinding for ArcGIS Pro clone.

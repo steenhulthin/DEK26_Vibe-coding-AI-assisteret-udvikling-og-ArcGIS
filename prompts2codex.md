@@ -100,3 +100,4 @@
 98. Genetablerede docs/index.html med HTML-entiteter for danske tegn efter skriveadgang blev bekræftet og loggede ændringen.
 99. Udvidede forsiden med GitHub-ikon og LinkedIn-kreditering, oprettede dedikerede undersider (præsentation, Dash, Shiny, Power BI, bonus) så alle kort åbner ens i ny fane, og fjernede outline-kortet.
 100. Gennemgik GH Pages-linkene, genetablerede praesentation-resurser med videoembed og opdaterede PowerPoint-linket til raw/main, samt bekraeftede at Shiny-undersiden peger paa begge hostingmuligheder.
+101. Diagnosticerede ArcGIS Pro clone-fejl som NumPy 2/binary ABI-mismatch (`_ARRAY_API not found`), pinned `numpy<2` i rodfilens requirements og dokumenterede conda-nedgradering i README.

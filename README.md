@@ -24,6 +24,20 @@ Dette repository samler materiale til Dansk Esri Konference 2026 om vibe coding 
    ```
 3. Log ind i ArcGIS Pro eller konfigurer en `home`/`pro` profil, så `GIS("pro")` eller `GIS("home")` virker.
 
+### Fejlfinding: NumPy 2 i ArcGIS Pro clone
+
+Hvis `from arcgis.gis import GIS` viser fejl som `_ARRAY_API not found` eller
+`A module that was compiled using NumPy 1.x cannot be run in NumPy 2.x`, er
+miljoet blandet med NumPy 2 og binaere pakker bygget mod NumPy 1.x. Pin eller
+nedgrader NumPy i det aktive ArcGIS-miljo:
+
+```powershell
+conda activate arcgispro-py3-clone
+conda install "numpy<2"
+```
+
+Koer derefter dashboard-scriptet igen fra samme miljo.
+
 ## ArcGIS workflow
 
 - `arcgis/dashboards/create_nordic_covid_scene.py` opretter eller opdaterer et tidsaktiveret hosted feature layer og en 3D-webscene med nordiske COVID-19 KPI'er.
