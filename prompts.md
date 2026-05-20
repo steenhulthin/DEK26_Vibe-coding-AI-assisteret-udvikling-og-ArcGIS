@@ -1391,3 +1391,16 @@ User:
 Shared a large working ArcGIS Dashboard JSON using version `4.34.0`, `layerDataSource`, modern state objects, `chartConfig`, map select tools, desktop/mobile views, and sidebar selectors.
 Assistant:
 Used the working Dashboard JSON as the schema reference. Updated generated dashboard JSON to use version `4.34.0`, `layerDataSource`, `showTopCaption`/`showBottomCaption` state objects, dashboard number-prefix metadata, modern map widget fields, and a `chartConfig` serial chart. Replaced the details widget with a rich text panel to reduce schema risk while getting the dashboard to load.
+User:
+# Context from my IDE setup:
+
+## Active file: arcgis/dashboards/create_nordic_covid_dashboard.py
+
+## Open tabs:
+- create_nordic_covid_dashboard.py: arcgis/dashboards/create_nordic_covid_dashboard.py
+- README.md: README.md
+
+## My request for Codex:
+Dashboard now loads and map displays data, but the screenshot shows the right side blank and no time slider.
+Assistant:
+Identified a layout orientation mismatch by comparing with the working Dashboard JSON: `col` is used for left/right splits and `row` for vertical stacking. Swapped the generated root split to `orientation="col"` and side panel stack to `orientation="row"`. Explained that ArcGIS Dashboards uses date selectors for time filtering rather than automatically showing the web map time slider.

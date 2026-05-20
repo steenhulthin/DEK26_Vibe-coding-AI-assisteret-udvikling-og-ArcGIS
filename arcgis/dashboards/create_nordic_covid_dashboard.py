@@ -547,7 +547,7 @@ def _dashboard_json(web_map_id: str, layer_item) -> dict:
             _item_layout(trend, height=0.42),
             _item_layout(details, height=0.22),
         ],
-        orientation="col",
+        orientation="row",
         width=0.42,
     )
     return {
@@ -569,7 +569,7 @@ def _dashboard_json(web_map_id: str, layer_item) -> dict:
                         _item_layout(map_widget, width=0.58),
                         side_column,
                     ],
-                    orientation="row",
+                    orientation="col",
                 ),
             },
             "settings": {
