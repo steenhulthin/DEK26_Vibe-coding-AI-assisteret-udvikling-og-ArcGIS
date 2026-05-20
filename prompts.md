@@ -1339,3 +1339,16 @@ User:
 Shared Dashboard JSON showing top-level `widgets`/`layout`, a `categorySelectorWidget`, and a `rootLayout`/`itemLayout` structure. Map itself looks good.
 Assistant:
 Identified the dashboard item JSON as an invalid simplified schema for AGOL Dashboards. Updated the publisher to emit a `desktopView`/`dockingLayout` structure with map, indicator, serial chart, and details widgets using feature service itemId/layerId data sources, and removed the invalid selector widget from the normal widget list.
+User:
+# Context from my IDE setup:
+
+## Active file: arcgis/dashboards/create_nordic_covid_dashboard.py
+
+## Open tabs:
+- create_nordic_covid_dashboard.py: arcgis/dashboards/create_nordic_covid_dashboard.py
+- README.md: README.md
+
+## My request for Codex:
+After dashboard schema update, running the script failed in `_create_or_update_web_map`: `TypeError: Item.update() got an unexpected keyword argument 'text'`.
+Assistant:
+Refactored item JSON publishing into helpers that try `text=` first and fall back to a temporary JSON file via `data=` for both web map and dashboard add/update paths.

@@ -103,3 +103,4 @@
 101. Diagnosticerede ArcGIS Pro clone-fejl som NumPy 2/binary ABI-mismatch (`_ARRAY_API not found`), pinned `numpy<2` i rodfilens requirements og dokumenterede conda-nedgradering i README.
 102. Afklarede AGOL Dashboard fatal error (`can't access property "type", t is undefined`) og bad om Dashboard item JSON, web map JSON, feature layer schema samt browser console/network context.
 103. Rettede dashboard-scriptet efter AGOL JSON-fejl ved at skifte fra forsimplet top-level `widgets`/`layout` til `desktopView` med `dockingLayout`, fulde widgetdefinitioner og itemId/layerId-baserede datasource-objekter.
+104. Rettede ArcGIS API-version mismatch hvor `Item.update(text=...)` fejlede for web map updates ved at indfoere faelles helpers, som falder tilbage til midlertidig JSON-fil via `data=`.

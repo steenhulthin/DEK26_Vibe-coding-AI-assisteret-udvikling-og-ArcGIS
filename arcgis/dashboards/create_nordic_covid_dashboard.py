@@ -60,6 +60,34 @@ def _find_feature_layer(gis: GIS):
     return matches[0], matches[0].layers[0]
 
 
+def _write_temp_json(text: str) -> str:
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as tmp:
+        tmp.write(text)
+        return tmp.name
+
+
+def _update_item_json(item, props: dict, text: str) -> None:
+    try:
+        item.update(item_properties=props, text=text)
+    except TypeError:
+        temp_path = _write_temp_json(text)
+        try:
+            item.update(item_properties=props, data=temp_path)
+        finally:
+            Path(temp_path).unlink(missing_ok=True)
+
+
+def _add_item_json(gis: GIS, props: dict, text: str, folder: str):
+    try:
+        return gis.content.add(item_properties=props, text=text, folder=folder)
+    except TypeError:
+        temp_path = _write_temp_json(text)
+        try:
+            return gis.content.add(item_properties=props, data=temp_path, folder=folder)
+        finally:
+            Path(temp_path).unlink(missing_ok=True)
+
+
 def _create_or_update_web_map(gis: GIS, folder: str, layer_item, layer) -> str:
     user = gis.users.me
     matches = gis.content.search(
@@ -133,9 +161,9 @@ def _create_or_update_web_map(gis: GIS, folder: str, layer_item, layer) -> str:
     text = json.dumps(web_map_json)
     if matches:
         item = matches[0]
-        item.update(item_properties=props, text=text)
+        _update_item_json(item, props, text)
     else:
-        item = gis.content.add(item_properties=props, text=text, folder=folder)
+        item = _add_item_json(gis, props, text, folder)
     return item.itemid
 
 
@@ -485,27 +513,9 @@ def _create_or_update_dashboard(gis: GIS, folder: str, dashboard_json: dict) -> 
     text = json.dumps(dashboard_json)
     if matches:
         item = matches[0]
-        try:
-            item.update(item_properties=props, text=text)
-        except TypeError:
-            with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as tmp:
-                tmp.write(text)
-                temp_path = tmp.name
-            try:
-                item.update(item_properties=props, data=temp_path)
-            finally:
-                Path(temp_path).unlink(missing_ok=True)
+        _update_item_json(item, props, text)
     else:
-        try:
-            gis.content.add(item_properties=props, text=text, folder=folder)
-        except TypeError:
-            with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as tmp:
-                tmp.write(text)
-                temp_path = tmp.name
-            try:
-                gis.content.add(item_properties=props, data=temp_path, folder=folder)
-            finally:
-                Path(temp_path).unlink(missing_ok=True)
+        _add_item_json(gis, props, text, folder)
 
 
 def main() -> int:
