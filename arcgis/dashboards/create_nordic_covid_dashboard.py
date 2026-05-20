@@ -13,9 +13,7 @@ Run:
 from __future__ import annotations
 
 import json
-import tempfile
 import uuid
-from pathlib import Path
 
 from arcgis.gis import GIS
 
@@ -60,32 +58,12 @@ def _find_feature_layer(gis: GIS):
     return matches[0], matches[0].layers[0]
 
 
-def _write_temp_json(text: str) -> str:
-    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as tmp:
-        tmp.write(text)
-        return tmp.name
-
-
 def _update_item_json(item, props: dict, text: str) -> None:
-    try:
-        item.update(item_properties=props, text=text)
-    except TypeError:
-        temp_path = _write_temp_json(text)
-        try:
-            item.update(item_properties=props, data=temp_path)
-        finally:
-            Path(temp_path).unlink(missing_ok=True)
+    item.update(item_properties={**props, "text": text})
 
 
 def _add_item_json(gis: GIS, props: dict, text: str, folder: str):
-    try:
-        return gis.content.add(item_properties=props, text=text, folder=folder)
-    except TypeError:
-        temp_path = _write_temp_json(text)
-        try:
-            return gis.content.add(item_properties=props, data=temp_path, folder=folder)
-        finally:
-            Path(temp_path).unlink(missing_ok=True)
+    return gis.content.add(item_properties={**props, "text": text}, folder=folder)
 
 
 def _create_or_update_web_map(gis: GIS, folder: str, layer_item, layer) -> str:
@@ -173,18 +151,26 @@ def _new_id() -> str:
 
 def _no_data_state() -> dict:
     return {
+        "text": "",
         "verticalAlignment": "middle",
-        "showCaption": True,
-        "showDescription": True,
+        "showTopCaption": True,
+        "showBottomCaption": True,
+    }
+
+
+def _no_value_state() -> dict:
+    return {
+        "verticalAlignment": "middle",
+        "showTopCaption": True,
+        "showBottomCaption": True,
     }
 
 
 def _feature_data_source(layer_item, layer_id: int = 0) -> dict:
     return {
-        "type": "featureServiceDataSource",
+        "type": "layerDataSource",
         "itemId": layer_item.itemid,
         "layerId": layer_id,
-        "table": True,
     }
 
 
@@ -197,101 +183,109 @@ def _service_dataset(layer_item, statistic_definitions: list[dict] | None = None
         "groupByFields": [],
         "orderByFields": [],
         "statisticDefinitions": statistic_definitions or [],
-        "querySpatialRelationship": "esriSpatialRelIntersects",
-        "returnGeometry": False,
-        "clientSideStatistics": False,
+        "returnDistinctValues": False,
+        "allowSourceDownload": False,
+        "allowSummaryDownload": False,
     }
+
+
+def _statistic_field_name(statistic: str, field: str) -> str:
+    return f"{statistic}_{field}".upper()
 
 
 def _indicator_widget(name: str, field: str, statistic: str, layer_item) -> dict:
     widget_id = _new_id()
+    statistic_field = _statistic_field_name(statistic, field)
     return {
         "id": widget_id,
         "type": "indicatorWidget",
         "name": name,
-        "caption": name,
-        "description": "",
-        "showLastUpdate": True,
+        "showLastUpdate": False,
         "noDataState": _no_data_state(),
         "noFilterState": _no_data_state(),
+        "noValueState": _no_value_state(),
         "datasets": [
             _service_dataset(
                 layer_item,
                 [
                     {
                         "onStatisticField": field,
-                        "outStatisticFieldName": "value",
                         "statisticType": statistic,
+                        "outStatisticFieldName": statistic_field,
                     }
                 ],
             )
         ],
         "defaultSettings": {
-            "topSection": {"fontSize": 80, "textInfo": {"text": name}},
-            "middleSection": {"fontSize": 160, "textInfo": {"text": "{value}"}},
-            "bottomSection": {"fontSize": 80, "textInfo": {}},
+            "topSection": {
+                "fontSize": 20,
+                "textInfo": {"text": name, "fillColor": "#474747"},
+            },
+            "middleSection": {
+                "fontSize": 40,
+                "textInfo": {"text": "{calculated/value}", "fillColor": "#367f68"},
+            },
+            "bottomSection": {"fontSize": 20, "textInfo": {}},
         },
         "comparison": "none",
-        "valueField": field,
-        "referenceField": "",
-        "valueConversion": {"factor": 1, "offset": 0},
-        "referenceConversion": {"factor": 1, "offset": 0},
         "valueType": "statistic",
         "valueFormat": {
             "name": "value",
+            "prefix": False,
             "style": "decimal",
             "useGrouping": True,
+            "minimumFractionDigits": 0,
             "maximumFractionDigits": 1,
-            "prefix": False,
+            "valuePrefix": "",
+            "valueSuffix": "",
         },
         "percentageFormat": {
             "name": "percentage",
+            "prefix": False,
             "style": "percent",
             "useGrouping": True,
+            "minimumFractionDigits": 0,
             "maximumFractionDigits": 2,
-            "prefix": False,
+            "valuePrefix": "",
+            "valueSuffix": "",
         },
         "ratioFormat": {
             "name": "ratio",
+            "prefix": False,
             "style": "decimal",
             "useGrouping": True,
+            "minimumFractionDigits": 0,
             "maximumFractionDigits": 2,
-            "prefix": False,
+            "valuePrefix": "",
+            "valueSuffix": "",
         },
     }
 
 
-def _details_widget(layer_item) -> dict:
+def _rich_text_widget() -> dict:
     return {
         "id": _new_id(),
-        "type": "detailsWidget",
+        "type": "richTextWidget",
         "name": "Details",
-        "caption": "Details",
-        "description": "",
-        "showLastUpdate": True,
+        "showLastUpdate": False,
         "noDataState": _no_data_state(),
         "noFilterState": _no_data_state(),
-        "showTitle": True,
-        "showContents": True,
-        "showMedia": True,
-        "showAttachments": True,
-        "datasets": [
-            {
-                **_service_dataset(layer_item),
-                "maxFeatures": 50,
-            }
-        ],
+        "text": (
+            "<h3>Details</h3>"
+            "<p>Use the map pop-ups to inspect country and month values.</p>"
+        ),
     }
 
 
 def _serial_chart_widget(layer_item) -> dict:
+    statistic_field = "SUM_NEW_DEATHS"
     dataset = _service_dataset(
         layer_item,
         [
             {
                 "onStatisticField": "new_deaths",
-                "outStatisticFieldName": "value",
                 "statisticType": "sum",
+                "outStatisticFieldName": statistic_field,
             }
         ],
     )
@@ -301,101 +295,166 @@ def _serial_chart_widget(layer_item) -> dict:
         "id": _new_id(),
         "type": "serialChartWidget",
         "name": "Monthly trend",
-        "caption": "Monthly trend",
-        "description": "",
-        "showLastUpdate": True,
+        "topCaption": "<p style=\"text-align:center\"><strong>Monthly trend</strong></p>\n",
+        "showLastUpdate": False,
         "noDataState": _no_data_state(),
         "noFilterState": _no_data_state(),
         "datasets": [dataset],
+        "actionMode": "monoSelection",
         "categoryType": "groupByValues",
-        "category": {
-            "fieldName": "report_date",
-            "labelOverrides": [],
-            "byCategoryColors": False,
-            "labelsPlacement": "default",
-            "labelRotation": 0,
-            "nullLabel": "Null",
-            "blankLabel": "Blank",
-            "defaultColor": "#d6d6d6",
-            "nullColor": "#d6d6d6",
-            "blankColor": "#d6d6d6",
-        },
-        "categoryAxis": {
-            "title": "Month",
-            "titleRotation": 0,
-            "titleFontSize": 12,
-            "fontSize": 12,
-            "gridThickness": 1,
-            "gridAlpha": 0.15,
-            "gridColor": "#ffffff",
-            "axisThickness": 1,
-            "axisAlpha": 0.5,
-            "axisColor": "#000000",
-            "labelsEnabled": True,
-            "gridPosition": "start",
-            "parseDates": True,
-            "minPeriod": "MM",
-        },
-        "valueAxis": {
-            "title": "Monthly deaths",
-            "titleRotation": 270,
-            "titleFontSize": 12,
-            "fontSize": 12,
-            "gridThickness": 1,
-            "gridAlpha": 0.15,
-            "gridColor": "#ffffff",
-            "axisThickness": 1,
-            "axisAlpha": 0.5,
-            "axisColor": "#000000",
-            "labelsEnabled": True,
-            "stackType": "none",
-        },
-        "graphs": [
-            {
-                "type": "column",
-                "valueField": "value",
-                "title": "Monthly deaths",
-                "lineColorField": "_lineColor_",
-                "fillColorsField": "_fillColor_",
-                "fillAlphas": 1,
-                "lineAlpha": 1,
-                "lineThickness": 1,
-                "bullet": "none",
-                "showBalloon": True,
-            }
-        ],
-        "legend": {
-            "enabled": False,
-            "position": "bottom",
-            "markerSize": 15,
-            "markerType": "circle",
-            "align": "center",
-            "labelWidth": 100,
-            "valueWidth": 0,
-        },
-        "splitBy": {"defaultColor": "#d6d6d6", "seriesProperties": []},
-        "chartScrollbar": {"enabled": False},
-        "commonGraphProperties": {"type": "column"},
-        "guides": [],
-        "events": [],
-        "selectionMode": "multi",
-        "rotate": False,
-        "fontSize": 11,
-        "color": "#474747",
         "valueFormat": {
             "name": "value",
+            "prefix": False,
             "style": "decimal",
             "useGrouping": True,
+            "minimumFractionDigits": 0,
             "maximumFractionDigits": 1,
-            "prefix": True,
+            "valuePrefix": "",
+            "valueSuffix": "",
         },
         "labelFormat": {
             "name": "label",
+            "prefix": False,
             "style": "decimal",
             "useGrouping": True,
+            "minimumFractionDigits": 0,
             "maximumFractionDigits": 1,
-            "prefix": True,
+            "valuePrefix": "",
+            "valueSuffix": "",
         },
+        "category": {
+            "labelOverrides": [],
+            "nullLabel": "null",
+            "blankLabel": "blank",
+        },
+        "parseDates": True,
+        "minPeriod": "MM",
+        "categoryAxisLabelsBehavior": "hide",
+        "chartConfig": {
+            "version": "24.4.0",
+            "type": "chart",
+            "orderOptions": {},
+            "colorMatch": False,
+            "axes": [
+                {
+                    "type": "chartAxis",
+                    "visible": True,
+                    "title": {
+                        "type": "chartText",
+                        "visible": True,
+                        "content": {
+                            "type": "esriTS",
+                            "angle": 0,
+                            "font": {
+                                "family": "inherit",
+                                "style": "normal",
+                                "weight": "bold",
+                            },
+                            "text": "Month",
+                        },
+                    },
+                    "valueFormat": {"type": "category", "characterLimit": 11},
+                    "lineSymbol": _chart_line_symbol(0.5),
+                    "labels": _chart_text(True),
+                    "grid": _chart_line_symbol(0.15),
+                    "guides": [],
+                    "scrollbar": {"visible": True, "width": 15, "gripSize": 22},
+                },
+                {
+                    "type": "chartAxis",
+                    "visible": True,
+                    "title": {
+                        "type": "chartText",
+                        "visible": True,
+                        "content": {
+                            "type": "esriTS",
+                            "angle": 270,
+                            "font": {
+                                "family": "inherit",
+                                "style": "normal",
+                                "weight": "bold",
+                            },
+                            "text": "Monthly deaths",
+                        },
+                    },
+                    "valueFormat": {
+                        "type": "number",
+                        "intlOptions": {
+                            "style": "decimal",
+                            "notation": "standard",
+                            "minimumFractionDigits": 0,
+                            "maximumFractionDigits": 1,
+                        },
+                    },
+                    "lineSymbol": _chart_line_symbol(0.5),
+                    "labels": _chart_text(True),
+                    "grid": _chart_line_symbol(0.15),
+                    "guides": [],
+                    "integerOnlyValues": False,
+                    "isLogarithmic": False,
+                    "buffer": True,
+                },
+            ],
+            "series": [
+                {
+                    "type": "barSeries",
+                    "id": "value",
+                    "name": "Monthly deaths",
+                    "x": "report_date",
+                    "dataLabels": _chart_text(False),
+                    "dataTooltipVisible": True,
+                    "dataTooltipReverseColor": True,
+                    "y": statistic_field,
+                    "fillSymbol": {
+                        "type": "esriSFS",
+                        "style": "esriSFSSolid",
+                        "color": [44, 127, 184, 255],
+                        "outline": {
+                            "type": "esriSLS",
+                            "style": "esriSLSSolid",
+                            "color": [44, 127, 184, 255],
+                            "width": 1,
+                        },
+                    },
+                }
+            ],
+            "legend": {
+                "type": "chartLegend",
+                "visible": False,
+                "body": _chart_text(True)["content"],
+                "position": "bottom",
+            },
+            "horizontalAxisLabelsBehavior": "hide",
+            "verticalAxisLabelsBehavior": "hide",
+            "rotated": False,
+            "cursorCrosshair": {"type": "cursorCrosshair"},
+            "stackedType": "sideBySide",
+        },
+    }
+
+
+def _chart_text(visible: bool) -> dict:
+    return {
+        "type": "chartText",
+        "visible": visible,
+        "content": {
+            "type": "esriTS",
+            "angle": 0,
+            "font": {
+                "family": "inherit",
+                "style": "normal",
+                "weight": "normal",
+            },
+        },
+    }
+
+
+def _chart_line_symbol(alpha: float) -> dict:
+    return {
+        "type": "esriSLS",
+        "style": "esriSLSSolid",
+        "color": [202, 202, 202, 255 * alpha],
+        "width": 1,
     }
 
 
@@ -424,6 +483,29 @@ def _stack_layout(
     }
 
 
+def _number_prefix_overrides() -> list[dict]:
+    keys = [
+        ("yotta", "Y", False),
+        ("zeta", "Z", False),
+        ("exa", "E", False),
+        ("peta", "P", False),
+        ("tera", "T", False),
+        ("giga", "G", False),
+        ("mega", "M", False),
+        ("kilo", "k", False),
+        ("base", "", True),
+        ("deci", "d", False),
+        ("centi", "c", False),
+        ("milli", "m", False),
+        ("micro", "µ", False),
+        ("nano", "n", False),
+    ]
+    return [
+        {"key": key, "symbol": symbol, "enabled": enabled}
+        for key, symbol, enabled in keys
+    ]
+
+
 def _dashboard_json(web_map_id: str, layer_item) -> dict:
     map_widget = {
         "id": _new_id(),
@@ -434,18 +516,29 @@ def _dashboard_json(web_map_id: str, layer_item) -> dict:
         "noFilterState": _no_data_state(),
         "flashRepeats": 3,
         "itemId": web_map_id,
-        "mapTools": [],
+        "mapTools": [{"type": "legendTool"}, {"type": "mapContentsTool"}],
+        "showMeasureTool": False,
         "showNavigation": True,
+        "showPanRotate": False,
         "showLocate": False,
         "showCompass": False,
         "showPopup": True,
         "scalebarStyle": "none",
-        "groupSelect": "none",
+        "editingEnabled": False,
+        "selectionColor": "#ff00ff",
+        "highlightColor": "#ff00ff",
+        "trackedFeatureColor": "#0000ff",
+        "trackedFeatureRadius": 60,
+        "selectTool": {
+            "type": "selectTool",
+            "clickToSelect": False,
+            "advanceSketchTools": [],
+        },
     }
     total_deaths = _indicator_widget("Monthly deaths", "new_deaths", "sum", layer_item)
     rate = _indicator_widget("Deaths per 100k", "deaths_per_100k", "avg", layer_item)
     trend = _serial_chart_widget(layer_item)
-    details = _details_widget(layer_item)
+    details = _rich_text_widget()
     widgets = [map_widget, total_deaths, rate, trend, details]
     side_column = _stack_layout(
         [
@@ -458,18 +551,14 @@ def _dashboard_json(web_map_id: str, layer_item) -> dict:
         width=0.42,
     )
     return {
-        "version": 55,
+        "version": "4.34.0",
         "authoringApp": "ArcGIS Dashboards",
-        "authoringAppVersion": "4.27.0+python",
+        "authoringAppVersion": "4.34.0+python",
         "maxPaginationRecords": 50000,
-        "mapOverrides": {
-            "highlightColor": "#ff00ff",
-            "trackedFeatureColor": "#0000ff",
-            "trackedFeatureRadius": 60,
-        },
-        "theme": "light",
-        "themeOverrides": {},
-        "numberPrefixOverrides": [],
+        "maxChartRecords": 10000,
+        "timeZone": "system",
+        "theme": {"id": "user", "type": "resource"},
+        "numberPrefixOverrides": _number_prefix_overrides(),
         "desktopView": {
             "type": "desktop",
             "widgets": widgets,
@@ -493,7 +582,7 @@ def _dashboard_json(web_map_id: str, layer_item) -> dict:
     }
 
 
-def _create_or_update_dashboard(gis: GIS, folder: str, dashboard_json: dict) -> None:
+def _create_or_update_dashboard(gis: GIS, folder: str, dashboard_json: dict):
     user = gis.users.me
     matches = gis.content.search(
         f'title:"{DASHBOARD_TITLE}" AND owner:{user.username}',
@@ -514,8 +603,22 @@ def _create_or_update_dashboard(gis: GIS, folder: str, dashboard_json: dict) -> 
     if matches:
         item = matches[0]
         _update_item_json(item, props, text)
+        return item
     else:
-        _add_item_json(gis, props, text, folder)
+        return _add_item_json(gis, props, text, folder)
+
+
+def _upgrade_dashboard_item(gis: GIS, dashboard_item) -> None:
+    try:
+        from arcgis.apps.dashboards import DashboardManager
+    except ImportError:
+        return
+
+    try:
+        DashboardManager(item=dashboard_item, gis=gis).upgrade()
+        print("Dashboard schema upgraded with arcgis.apps.dashboards.DashboardManager.")
+    except Exception as exc:  # pragma: no cover - depends on ArcGIS API version
+        print("DashboardManager upgrade skipped:", exc)
 
 
 def main() -> int:
@@ -526,7 +629,12 @@ def main() -> int:
     print("Using hosted feature layer:", layer.url)
     web_map_id = _create_or_update_web_map(gis, FOLDER_NAME, layer_item, layer)
     print("Dashboard web map ready:", web_map_id)
-    _create_or_update_dashboard(gis, FOLDER_NAME, _dashboard_json(web_map_id, layer_item))
+    dashboard_item = _create_or_update_dashboard(
+        gis,
+        FOLDER_NAME,
+        _dashboard_json(web_map_id, layer_item),
+    )
+    _upgrade_dashboard_item(gis, dashboard_item)
     print("ArcGIS Dashboard item created or updated. Open it in ArcGIS Online to fine-tune layout and selectors.")
     return 0
 

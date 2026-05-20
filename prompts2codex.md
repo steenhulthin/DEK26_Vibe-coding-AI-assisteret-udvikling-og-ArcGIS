@@ -104,3 +104,6 @@
 102. Afklarede AGOL Dashboard fatal error (`can't access property "type", t is undefined`) og bad om Dashboard item JSON, web map JSON, feature layer schema samt browser console/network context.
 103. Rettede dashboard-scriptet efter AGOL JSON-fejl ved at skifte fra forsimplet top-level `widgets`/`layout` til `desktopView` med `dockingLayout`, fulde widgetdefinitioner og itemId/layerId-baserede datasource-objekter.
 104. Rettede ArcGIS API-version mismatch hvor `Item.update(text=...)` fejlede for web map updates ved at indfoere faelles helpers, som falder tilbage til midlertidig JSON-fil via `data=`.
+105. Rettede AGOL Dashboard `e is null`/missing version-fejl ved at gemme Dashboard/Web Map JSON som `item_properties["text"]` i stedet for `data=`, og tilfoejede valgfri `arcgis.apps.dashboards.DashboardManager.upgrade()` naar modulet findes.
+106. Rettede naeste AGOL Dashboard schema-fejl (`e.noValueState is undefined`) ved at tilfoeje `noValueState` til indicator widgets og `text` til no-data/no-filter state objekter.
+107. Brugte brugerens fungerende Dashboard JSON som 4.34-skema-reference og opdaterede dashboard-generatoren til `layerDataSource`, moderne state keys, number-prefix metadata, map select-tool felter og `chartConfig`; details-widget blev midlertidigt erstattet med rich text for lavere schema-risiko.
