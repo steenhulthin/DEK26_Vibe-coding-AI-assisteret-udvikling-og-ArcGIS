@@ -21,6 +21,7 @@ FOLDER_NAME = "dek_2026"
 FEATURE_LAYER_TITLE = "Nordic COVID-19 Monthly Deaths"
 DASHBOARD_TITLE = "Nordic COVID-19 Dashboard"
 WEB_MAP_TITLE = "Nordic COVID-19 Dashboard Map"
+WEB_MAP_LAYER_ID = "nordic_covid_deaths"
 
 
 def _connect_gis() -> GIS:
@@ -76,7 +77,7 @@ def _create_or_update_web_map(gis: GIS, folder: str, layer_item, layer) -> str:
     web_map_json = {
         "operationalLayers": [
             {
-                "id": "nordic_covid_deaths",
+                "id": WEB_MAP_LAYER_ID,
                 "itemId": layer_item.itemid,
                 "layerType": "ArcGISFeatureLayer",
                 "url": layer.url,
@@ -506,6 +507,66 @@ def _number_prefix_overrides() -> list[dict]:
     ]
 
 
+def _date_filter_targets(map_widget: dict, data_widgets: list[dict]) -> list[dict]:
+    targets = [
+        {
+            "targetId": f"{map_widget['id']}#{WEB_MAP_LAYER_ID}",
+            "by": "whereClause",
+            "requiresSelection": False,
+            "fieldMap": [{"sourceName": "filterField", "targetName": "report_date"}],
+        }
+    ]
+    targets.extend(
+        {
+            "targetId": f"{widget['id']}#main",
+            "by": "whereClause",
+            "requiresSelection": False,
+            "fieldMap": [{"sourceName": "filterField", "targetName": "report_date"}],
+        }
+        for widget in data_widgets
+    )
+    return targets
+
+
+def _date_selector(map_widget: dict, data_widgets: list[dict]) -> dict:
+    return {
+        "id": _new_id(),
+        "name": "Date selector",
+        "showLastUpdate": False,
+        "noDataState": _no_data_state(),
+        "noFilterState": _no_data_state(),
+        "events": [
+            {
+                "type": "selectionChanged",
+                "actions": [
+                    {
+                        "type": "filter",
+                        "targets": _date_filter_targets(map_widget, data_widgets),
+                    }
+                ],
+            }
+        ],
+        "label": "Report date",
+        "caption": "Report date",
+        "type": "dateSelectorWidget",
+        "optionType": "datePicker",
+        "datePickerOption": {
+            "type": "datePicker",
+            "selectionType": "range",
+            "operator": "between",
+        },
+        "presentationMode": "accordion",
+    }
+
+
+def _sidebar(selectors: list[dict]) -> dict:
+    return {
+        "selectors": selectors,
+        "type": "sidebar",
+        "topCaption": "<h3 style=\"text-align:center\"><strong>Filters</strong></h3>\n",
+    }
+
+
 def _dashboard_json(web_map_id: str, layer_item) -> dict:
     map_widget = {
         "id": _new_id(),
@@ -540,6 +601,7 @@ def _dashboard_json(web_map_id: str, layer_item) -> dict:
     trend = _serial_chart_widget(layer_item)
     details = _rich_text_widget()
     widgets = [map_widget, total_deaths, rate, trend, details]
+    data_widgets = [total_deaths, rate, trend]
     side_column = _stack_layout(
         [
             _item_layout(total_deaths, height=0.18),
@@ -577,6 +639,7 @@ def _dashboard_json(web_map_id: str, layer_item) -> dict:
                 "allowElementExpansion": True,
                 "allowReset": False,
             },
+            "sidebar": _sidebar([_date_selector(map_widget, data_widgets)]),
         },
         "elementMappings": {},
     }

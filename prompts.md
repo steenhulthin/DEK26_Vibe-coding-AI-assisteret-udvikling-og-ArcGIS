@@ -1404,3 +1404,29 @@ User:
 Dashboard now loads and map displays data, but the screenshot shows the right side blank and no time slider.
 Assistant:
 Identified a layout orientation mismatch by comparing with the working Dashboard JSON: `col` is used for left/right splits and `row` for vertical stacking. Swapped the generated root split to `orientation="col"` and side panel stack to `orientation="row"`. Explained that ArcGIS Dashboards uses date selectors for time filtering rather than automatically showing the web map time slider.
+User:
+# Context from my IDE setup:
+
+## Active file: arcgis/dashboards/create_nordic_covid_dashboard.py
+
+## Open tabs:
+- create_nordic_covid_dashboard.py: arcgis/dashboards/create_nordic_covid_dashboard.py
+- README.md: README.md
+
+## My request for Codex:
+Asked for a deep search on whether the web map time slider transfers to ArcGIS Dashboards, and for alternative solutions if not possible.
+Assistant:
+Researched Esri docs for Dashboard map tools, selectors, filters, URL parameters, Map Viewer time settings, and embedded content. Concluded that the native Map Viewer time slider is not exposed as a Dashboard map tool; recommended Dashboard date selectors, month/category selectors, URL date parameters, or embedding/linking to a time-enabled Instant App/custom Maps SDK app for true animation.
+User:
+# Context from my IDE setup:
+
+## Active file: arcgis/dashboards/create_nordic_covid_dashboard.py
+
+## Open tabs:
+- create_nordic_covid_dashboard.py: arcgis/dashboards/create_nordic_covid_dashboard.py
+- README.md: README.md
+
+## My request for Codex:
+Chose option 1: add a Dashboard-native date selector.
+Assistant:
+Added a side-panel `dateSelectorWidget` configured as a range date picker. Wired its `selectionChanged` filter action to the web map operational layer and the indicator/chart datasets via `report_date`, using `mapWidgetId#layerId` and `widgetId#main` target IDs.
