@@ -1430,3 +1430,30 @@ User:
 Chose option 1: add a Dashboard-native date selector.
 Assistant:
 Added a side-panel `dateSelectorWidget` configured as a range date picker. Wired its `selectionChanged` filter action to the web map operational layer and the indicator/chart datasets via `report_date`, using `mapWidgetId#layerId` and `widgetId#main` target IDs.
+User:
+# Context from my IDE setup:
+
+## Active file: arcgis/dashboards/create_nordic_covid_dashboard.py
+
+## Open tabs:
+- create_nordic_covid_dashboard.py: arcgis/dashboards/create_nordic_covid_dashboard.py
+
+## My request for Codex:
+fix references to Vibe coding og AI-assisteret udvikling af geodata-dashboards-20251106_160910-Meeting Recording.mp4 replace with DEK 2026-20260520_172309-Meeting Recording.mp4
+Assistant:
+Searched the repository for text references to the old recording name and broader `Meeting Recording` patterns. Confirmed Git sees the old tracked MP4 as deleted and the new `DEK 2026-20260520_172309-Meeting Recording.mp4` as added, so the asset replacement is represented in the working tree. Updated `prompts2codex.md` and `prompts.md` with this request.
+User:
+# Context from my IDE setup:
+
+## Active file: docs/praesentation.html
+
+## Open tabs:
+- praesentation.html: docs/praesentation.html
+- praesentation.md: docs/praesentation.md
+- praesentation-resurser.html: docs/praesentation-resurser.html
+- create_nordic_covid_dashboard.py: arcgis/dashboards/create_nordic_covid_dashboard.py
+
+## My request for Codex:
+The code under the /docs folder needs update. Under "Præsentation" remove the current link and add link to the video and the pttx file and the presentation in a embedded webviewer.
+Assistant:
+Updated the `docs/index.html` Pr&aelig;sentation card to replace the single current link with separate actions for the webviewer, PowerPoint file and video. Reworked `docs/praesentation-resurser.html` into a presentation hub with cards for PowerPoint, video and outline plus an embedded Office webviewer, and added responsive iframe styling in `docs/assets/css/ssi-theme.css`.

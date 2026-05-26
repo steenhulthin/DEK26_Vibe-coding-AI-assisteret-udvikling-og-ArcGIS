@@ -185,6 +185,30 @@ a:focus {
   font-style: italic;
 }
 
+.viewer-panel {
+  background: #ffffff;
+  border-radius: var(--radius-large);
+  box-shadow: var(--card-shadow);
+  margin-top: 1.75rem;
+  padding: 1.75rem 2rem 2rem;
+}
+
+.viewer-panel h2 {
+  color: var(--ssi-dark-blue);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.viewer-panel iframe {
+  border: 0;
+  border-radius: 10px;
+  display: block;
+  height: min(72vh, 760px);
+  min-height: 520px;
+  width: 100%;
+}
+
 @media (max-width: 720px) {
   .site-header {
     padding: 2.8rem 1.25rem 2.25rem;
@@ -201,6 +225,14 @@ a:focus {
 
   .markdown-wrapper {
     padding: 2rem 1.5rem;
+  }
+
+  .viewer-panel {
+    padding: 1.5rem;
+  }
+
+  .viewer-panel iframe {
+    min-height: 420px;
   }
 }
 .card .card-note {
