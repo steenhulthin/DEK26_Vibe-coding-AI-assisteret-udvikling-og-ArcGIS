@@ -57,3 +57,4 @@ Koer derefter dashboard-scriptet igen fra samme miljo.
 
 - Projektet er licenseret under **CC BY-NC-SA 4.0** (se `LICENSE`).
 - Eksterne datasæt (OWID, SSI, nationale statistik-kilder m.fl.) refereres i dokumentation og scripts.
+
