@@ -1457,3 +1457,20 @@ User:
 The code under the /docs folder needs update. Under "Præsentation" remove the current link and add link to the video and the pttx file and the presentation in a embedded webviewer.
 Assistant:
 Updated the `docs/index.html` Pr&aelig;sentation card to replace the single current link with separate actions for the webviewer, PowerPoint file and video. Reworked `docs/praesentation-resurser.html` into a presentation hub with cards for PowerPoint, video and outline plus an embedded Office webviewer, and added responsive iframe styling in `docs/assets/css/ssi-theme.css`.
+User:
+# Context from my IDE setup:
+
+## Active file: docs/scene.html
+
+## Open tabs:
+- scene.html: docs/scene.html
+- README.md: README.md
+
+## My request for Codex:
+remove all subpages, only keep the index page. The presentation card should start with the video link, then "Pr&aelig;sentationen i webviewer" (opening the the webviewer in a new brawser tab and finally the "Hent PowerPoint". 
+
+"ArcGIS webscene" skal v&aelig;re u&aelig;ndret. 
+"AcrGIS Dashboard" skal linke til https://sseruminstitut.maps.arcgis.com/apps/dashboards/d4d6f21486fe49bfa72754ca56aab87a (skal &aring;bne i ny browser tab). Fjern status-delen p&aring; card'et. 
+Fjern "bagvedliggende noter"-card'et.
+Assistant:
+Forenklede `docs/index.html`, s&aring; pr&aelig;sentationskortet nu viser video, Office webviewer og PowerPoint-download i den r&aelig;kkef&oslash;lge. ArcGIS webscene-kortet er u&aelig;ndret, ArcGIS Dashboard-kortet linker direkte til AGOL-dashboardet i ny fane uden statusnote, og "Bagvedliggende noter" samt de gamle docs-undersider er fjernet.

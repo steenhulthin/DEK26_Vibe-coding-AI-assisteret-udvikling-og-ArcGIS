@@ -112,3 +112,4 @@
 110. Tilfoejede Dashboard-native date selector som sidepanel range date picker og koblede dens filter-action til web map layer samt indicator/chart datasets paa `report_date`.
 111. Erstattede den gamle optagelsesfil-reference/asset `Vibe coding og AI-assisteret udvikling af geodata-dashboards-20251106_160910-Meeting Recording.mp4` med `DEK 2026-20260520_172309-Meeting Recording.mp4` og opdaterede prompt-loggene.
 112. Opdaterede docs-pr&aelig;sentationssektionen med separate links til video og PowerPoint samt en indlejret Office webviewer p&aring; `praesentation-resurser.html`.
+113. Forenklede GH Pages til forsiden og den eksisterende ArcGIS webscene: pr&aelig;sentationskortet starter nu med videolink, derefter Office webviewer og PowerPoint-download; ArcGIS Dashboard linker direkte til AGOL i ny fane uden statusnote, og bagvedliggende noter samt gamle docs-undersider blev fjernet.
